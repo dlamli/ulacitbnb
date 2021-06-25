@@ -21,13 +21,13 @@ namespace ulacit_bnb.Models
             this.Reservation = new HashSet<Reservation>();
         }
     
-        public int RoomID { get; set; }
-        public decimal Price { get; set; }
-        public decimal Quantity { get; set; }
-        public string Type { get; set; }
-        public string Evaluation { get; set; }
-        public decimal BedQuantity { get; set; }
-        public int ServiceID { get; set; }
+        public int Roo_ID { get; set; }
+        public decimal Roo_Price { get; set; }
+        public decimal Roo_Quantity { get; set; }
+        public string Roo_Type { get; set; }
+        public string Roo_Evaluation { get; set; }
+        public decimal Roo_BedQuantity { get; set; }
+        public int Ser_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Accomodation> Accomodation { get; set; }

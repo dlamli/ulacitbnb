@@ -20,14 +20,14 @@ namespace ulacit_bnb.Models
             this.Reservation = new HashSet<Reservation>();
         }
     
-        public int PaymentID { get; set; }
-        public string Brand { get; set; }
-        public string Type { get; set; }
-        public string Modality { get; set; }
-        public System.DateTime PaymentDate { get; set; }
-        public int Amount { get; set; }
-        public decimal Taxes { get; set; }
-        public decimal Total { get; set; }
+        public int Pay_ID { get; set; }
+        public string Pay_Brand { get; set; }
+        public string Pay_Type { get; set; }
+        public string Pay_Modality { get; set; }
+        public System.DateTime Pay_Date { get; set; }
+        public int Pay_Amount { get; set; }
+        public decimal Pay_Taxes { get; set; }
+        public decimal Pay_Total { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }

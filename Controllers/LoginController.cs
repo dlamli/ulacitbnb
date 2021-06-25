@@ -30,22 +30,22 @@ namespace ulacit_bnb.Controllers
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT UserID
-                                                                 ,Name
-                                                                 ,LastName
-                                                                 ,Identification
-                                                                 ,Password
-                                                                 ,Email
-                                                                 ,Status
-                                                                 ,BirthDate
-                                                                 ,Phone
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Use_ID
+                                                                 ,Use_Name
+                                                                 ,Use_LastName
+                                                                 ,Use_Identification
+                                                                 ,Use_Password
+                                                                 ,Use_Email
+                                                                 ,Use_Status
+                                                                 ,Use_BirthDate
+                                                                 ,Use_Phone
                                                              FROM [User]
                                                              WHERE 
-                                                                Identification = @Identification 
-                                                                AND Password = @Password", sqlConnection);
+                                                                Use_Identification = @Use_Identification 
+                                                                AND Use_Password = @Use_Password", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@Identification", loginRequest.Username);
-                    sqlCommand.Parameters.AddWithValue("@Password", loginRequest.Password);
+                    sqlCommand.Parameters.AddWithValue("@Use_Identification", loginRequest.Username);
+                    sqlCommand.Parameters.AddWithValue("@Use_Password", loginRequest.Password);
 
                     sqlConnection.Open();
 
@@ -53,15 +53,15 @@ namespace ulacit_bnb.Controllers
 
                     if (sqlDataReader.Read())
                     {
-                        user.UserID = sqlDataReader.GetInt32(0);
-                        user.Name = sqlDataReader.GetString(1);
-                        user.LastName = sqlDataReader.GetString(2);
-                        user.Identification = sqlDataReader.GetString(3);
-                        user.Password = sqlDataReader.GetString(4);
-                        user.Email = sqlDataReader.GetString(5);
-                        user.Status = sqlDataReader.GetString(6);
-                        user.BirthDate = sqlDataReader.GetDateTime(7);
-                        user.Phone = sqlDataReader.GetString(8);
+                        user.Use_ID = sqlDataReader.GetInt32(0);
+                        user.Use_Name = sqlDataReader.GetString(1);
+                        user.Use_LastName = sqlDataReader.GetString(2);
+                        user.Use_Identification = sqlDataReader.GetString(3);
+                        user.Use_Password = sqlDataReader.GetString(4);
+                        user.Use_Email = sqlDataReader.GetString(5);
+                        user.Use_Status = sqlDataReader.GetString(6);
+                        user.Use_BirthDate = sqlDataReader.GetDateTime(7);
+                        user.Use_Phone = sqlDataReader.GetString(8);
 
                         var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
                         user.Token = token;
@@ -90,33 +90,33 @@ namespace ulacit_bnb.Controllers
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[User](
-                                                                  Name
-                                                                 ,LastName
-                                                                 ,Identification
-                                                                 ,Password
-                                                                 ,Email
-                                                                 ,Status
-                                                                 ,BirthDate
-                                                                 ,Phone)
+                    SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[User](               
+                                                                  Use_Name
+                                                                 ,Use_LastName
+                                                                 ,Use_Identification
+                                                                 ,Use_Password
+                                                                 ,Use_Email
+                                                                 ,Use_Status
+                                                                 ,Use_BirthDate
+                                                                 ,Use_Phone)
                                                             VALUES(
-                                                                  @Name
-                                                                 ,@LastName
-                                                                 ,@Identification
-                                                                 ,@Password
-                                                                 ,@Email
-                                                                 ,@Status
-                                                                 ,@BirthDate
-                                                                 ,@Phone)", sqlConnection);
+                                                                  @Use_Name
+                                                                 ,@Use_LastName
+                                                                 ,@Use_Identification
+                                                                 ,@Use_Password
+                                                                 ,@Use_Email
+                                                                 ,@Use_Status
+                                                                 ,@Use_BirthDate
+                                                                 ,@Use_Phone)", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Name", user.Name);
-                    sqlCommand.Parameters.AddWithValue("LastName", user.LastName);
-                    sqlCommand.Parameters.AddWithValue("Identification", user.Identification);
-                    sqlCommand.Parameters.AddWithValue("Password", user.Password);
-                    sqlCommand.Parameters.AddWithValue("Email", user.Email);
-                    sqlCommand.Parameters.AddWithValue("Status", user.Status);
-                    sqlCommand.Parameters.AddWithValue("BirthDate", user.BirthDate);
-                    sqlCommand.Parameters.AddWithValue("Phone", user.Phone);
+                    sqlCommand.Parameters.AddWithValue("Use_Name", user.Use_Name);
+                    sqlCommand.Parameters.AddWithValue("Use_LastName", user.Use_LastName);
+                    sqlCommand.Parameters.AddWithValue("Use_Identification", user.Use_Identification);
+                    sqlCommand.Parameters.AddWithValue("Use_Password", user.Use_Password);
+                    sqlCommand.Parameters.AddWithValue("Use_Email", user.Use_Email);
+                    sqlCommand.Parameters.AddWithValue("Use_Status", user.Use_Status);
+                    sqlCommand.Parameters.AddWithValue("Use_BirthDate", user.Use_BirthDate);
+                    sqlCommand.Parameters.AddWithValue("Use_Phone", user.Use_Phone);
 
 
                     sqlConnection.Open();

@@ -254,8 +254,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\ulacit-bnb-model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ulacit-bnb-model.Context.cs</LastGenOutput>
       <DependentUpon>ulacit-bnb-model.edmx</DependentUpon>
+      <LastGenOutput>ulacit-bnb-model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ulacit-bnb-model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

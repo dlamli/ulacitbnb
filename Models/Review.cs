@@ -20,14 +20,14 @@ namespace ulacit_bnb.Models
             this.Accomodation = new HashSet<Accomodation>();
         }
     
-        public int ReviewID { get; set; }
-        public System.DateTime DateReview { get; set; }
-        public int Rate { get; set; }
-        public string Recommendation { get; set; }
-        public string Comment { get; set; }
-        public string Usefull { get; set; }
-        public string Tittle { get; set; }
-        public int UserID { get; set; }
+        public int Rev_ID { get; set; }
+        public System.DateTime Rev_DateReview { get; set; }
+        public int Rev_Rate { get; set; }
+        public string Rev_Recommendation { get; set; }
+        public string Rev_Comment { get; set; }
+        public string Rev_Usefull { get; set; }
+        public string Rev_Tittle { get; set; }
+        public int Use_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Accomodation> Accomodation { get; set; }

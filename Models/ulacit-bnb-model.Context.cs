@@ -15,10 +15,10 @@ namespace ulacit_bnb.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class ulacitbnb : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public ulacitbnb()
+            : base("name=ulacitbnb")
         {
         }
     

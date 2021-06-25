@@ -14,17 +14,17 @@ namespace ulacit_bnb.Models
     
     public partial class Accomodation
     {
-        public int AccomodationID { get; set; }
-        public string Name { get; set; }
-        public string Country { get; set; }
-        public string Zipcode { get; set; }
-        public string State { get; set; }
-        public string Address { get; set; }
-        public string Description { get; set; }
-        public string Evaluation { get; set; }
-        public int ReviewID { get; set; }
-        public int RoomID { get; set; }
-        public int HostID { get; set; }
+        public int Acc_ID { get; set; }
+        public string Acc_Name { get; set; }
+        public string Acc_Country { get; set; }
+        public string Acc_Zipcode { get; set; }
+        public string Acc_State { get; set; }
+        public string Acc_Address { get; set; }
+        public string Acc_Description { get; set; }
+        public string Acc_Evaluation { get; set; }
+        public int Rev_ID { get; set; }
+        public int Roo_ID { get; set; }
+        public int Hos_ID { get; set; }
     
         public virtual Host Host { get; set; }
         public virtual Review Review { get; set; }

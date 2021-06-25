@@ -20,11 +20,11 @@ namespace ulacit_bnb.Models
             this.Room = new HashSet<Room>();
         }
     
-        public int ServiceID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Type { get; set; }
-        public string Status { get; set; }
+        public int Ser_ID { get; set; }
+        public string Ser_Name { get; set; }
+        public string Ser_Description { get; set; }
+        public string Ser_Type { get; set; }
+        public string Ser_Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Room { get; set; }

@@ -7,93 +7,93 @@
       <Schema Namespace="UlacitBnBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accomodation">
           <Key>
-            <PropertyRef Name="AccomodationID" />
+            <PropertyRef Name="Acc_ID" />
           </Key>
-          <Property Name="AccomodationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Zipcode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="State" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Evaluation" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReviewID" Type="int" Nullable="false" />
-          <Property Name="RoomID" Type="int" Nullable="false" />
-          <Property Name="HostID" Type="int" Nullable="false" />
+          <Property Name="Acc_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Acc_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acc_Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acc_Zipcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acc_State" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Acc_Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acc_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acc_Evaluation" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rev_ID" Type="int" Nullable="false" />
+          <Property Name="Roo_ID" Type="int" Nullable="false" />
+          <Property Name="Hos_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Host">
           <Key>
-            <PropertyRef Name="HostID" />
+            <PropertyRef Name="Hos_ID" />
           </Key>
-          <Property Name="HostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Status" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Hos_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hos_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hos_LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hos_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hos_Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hos_Status" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
-            <PropertyRef Name="PaymentID" />
+            <PropertyRef Name="Pay_ID" />
           </Key>
-          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Modality" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
-          <Property Name="Amount" Type="int" Nullable="false" />
-          <Property Name="Taxes" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pay_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pay_Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pay_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pay_Modality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pay_Date" Type="datetime" Nullable="false" />
+          <Property Name="Pay_Amount" Type="int" Nullable="false" />
+          <Property Name="Pay_Taxes" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pay_Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="Res_ID" />
           </Key>
-          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StartDate" Type="datetime" Nullable="false" />
-          <Property Name="ReservationDate" Type="datetime" Nullable="false" />
-          <Property Name="EndDate" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="Quantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ResolutionDate" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PaymentID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="Res_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Res_StartDate" Type="datetime" Nullable="false" />
+          <Property Name="Res_ReservationDate" Type="datetime" Nullable="false" />
+          <Property Name="Res_EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Res_Status" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Res_Quantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Res_ResolutionDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Res_PaymentID" Type="int" Nullable="false" />
+          <Property Name="Use_ID" Type="int" Nullable="false" />
+          <Property Name="Roo_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
-            <PropertyRef Name="ReviewID" />
+            <PropertyRef Name="Rev_ID" />
           </Key>
-          <Property Name="ReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DateReview" Type="datetime" Nullable="false" />
-          <Property Name="Rate" Type="int" Nullable="false" />
-          <Property Name="Recommendation" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="Comment" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Usefull" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="Tittle" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Rev_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rev_DateReview" Type="datetime" Nullable="false" />
+          <Property Name="Rev_Rate" Type="int" Nullable="false" />
+          <Property Name="Rev_Recommendation" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Rev_Comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rev_Usefull" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Rev_Tittle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Use_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
-            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="Roo_ID" />
           </Key>
-          <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Price" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Quantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Evaluation" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="BedQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="Roo_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roo_Price" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Roo_Quantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Roo_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Roo_Evaluation" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Roo_BedQuantity" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Ser_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
-            <PropertyRef Name="ServiceID" />
+            <PropertyRef Name="Ser_ID" />
           </Key>
-          <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Status" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Ser_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ser_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ser_Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ser_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ser_Status" Type="char" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -107,17 +107,17 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Use_ID" />
           </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Identification" Type="numeric" Precision="8" Scale="0" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Status" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="BirthDate" Type="datetime" Nullable="false" />
-          <Property Name="Phone" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="Use_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Use_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Use_LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Use_Identification" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Use_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Use_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Use_Status" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Use_BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Use_Phone" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -142,10 +142,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Host">
-              <PropertyRef Name="HostID" />
+              <PropertyRef Name="Hos_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="HostID" />
+              <PropertyRef Name="Hos_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -154,10 +154,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Review">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="Rev_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="Rev_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -166,10 +166,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,10 +178,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payment">
-              <PropertyRef Name="PaymentID" />
+              <PropertyRef Name="Pay_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="PaymentID" />
+              <PropertyRef Name="Res_PaymentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,10 +190,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -202,10 +202,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,10 +214,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Principal>
             <Dependent Role="Review">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -226,10 +226,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
-              <PropertyRef Name="ServiceID" />
+              <PropertyRef Name="Ser_ID" />
             </Principal>
             <Dependent Role="Room">
-              <PropertyRef Name="ServiceID" />
+              <PropertyRef Name="Ser_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,106 +324,106 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
       <Schema Namespace="UlacitBnBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Accomodation">
           <Key>
-            <PropertyRef Name="AccomodationID" />
+            <PropertyRef Name="Acc_ID" />
           </Key>
-          <Property Name="AccomodationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="State" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Evaluation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ReviewID" Type="Int32" Nullable="false" />
-          <Property Name="RoomID" Type="Int32" Nullable="false" />
-          <Property Name="HostID" Type="Int32" Nullable="false" />
+          <Property Name="Acc_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Acc_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acc_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acc_Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acc_State" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Acc_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acc_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acc_Evaluation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rev_ID" Type="Int32" Nullable="false" />
+          <Property Name="Roo_ID" Type="Int32" Nullable="false" />
+          <Property Name="Hos_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Host" Relationship="Self.FK_Accomodation_Host" FromRole="Accomodation" ToRole="Host" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Accomodation_Review" FromRole="Accomodation" ToRole="Review" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Accomodation_Room" FromRole="Accomodation" ToRole="Room" />
         </EntityType>
         <EntityType Name="Host">
           <Key>
-            <PropertyRef Name="HostID" />
+            <PropertyRef Name="Hos_ID" />
           </Key>
-          <Property Name="HostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Hos_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hos_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hos_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hos_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hos_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hos_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Accomodation" Relationship="Self.FK_Accomodation_Host" FromRole="Host" ToRole="Accomodation" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
-            <PropertyRef Name="PaymentID" />
+            <PropertyRef Name="Pay_ID" />
           </Key>
-          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Modality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="Taxes" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pay_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pay_Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pay_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pay_Modality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pay_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Pay_Amount" Type="Int32" Nullable="false" />
+          <Property Name="Pay_Taxes" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pay_Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Payment" FromRole="Payment" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="ReservationID" />
+            <PropertyRef Name="Res_ID" />
           </Key>
-          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ResolutionDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PaymentID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="Res_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Res_StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Res_ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Res_EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Res_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Res_Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Res_ResolutionDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Res_PaymentID" Type="Int32" Nullable="false" />
+          <Property Name="Use_ID" Type="Int32" Nullable="false" />
+          <Property Name="Roo_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Payment" Relationship="Self.FK_Reservation_Payment" FromRole="Reservation" ToRole="Payment" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Reservation_Room" FromRole="Reservation" ToRole="Room" />
           <NavigationProperty Name="User" Relationship="Self.FK_Reservation_User" FromRole="Reservation" ToRole="User" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
-            <PropertyRef Name="ReviewID" />
+            <PropertyRef Name="Rev_ID" />
           </Key>
-          <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateReview" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Rate" Type="Int32" Nullable="false" />
-          <Property Name="Recommendation" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Usefull" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Rev_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rev_DateReview" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Rev_Rate" Type="Int32" Nullable="false" />
+          <Property Name="Rev_Recommendation" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Rev_Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rev_Usefull" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Rev_Tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Use_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Accomodation" Relationship="Self.FK_Accomodation_Review" FromRole="Review" ToRole="Accomodation" />
           <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
-            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="Roo_ID" />
           </Key>
-          <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Evaluation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BedQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="Roo_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roo_Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Roo_Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Roo_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Roo_Evaluation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Roo_BedQuantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Ser_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Accomodation" Relationship="Self.FK_Accomodation_Room" FromRole="Room" ToRole="Accomodation" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Room" FromRole="Room" ToRole="Reservation" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Room_Service" FromRole="Room" ToRole="Service" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
-            <PropertyRef Name="ServiceID" />
+            <PropertyRef Name="Ser_ID" />
           </Key>
-          <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ser_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ser_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ser_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ser_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ser_Status" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Room_Service" FromRole="Service" ToRole="Room" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -438,17 +438,17 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Use_ID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Identification" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Phone" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="Use_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Use_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Use_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Use_Identification" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Use_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Use_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Use_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Use_BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Use_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_User" FromRole="User" ToRole="Reservation" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_User" FromRole="User" ToRole="Review" />
         </EntityType>
@@ -473,10 +473,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Host">
-              <PropertyRef Name="HostID" />
+              <PropertyRef Name="Hos_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="HostID" />
+              <PropertyRef Name="Hos_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -485,10 +485,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Review">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="Rev_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="ReviewID" />
+              <PropertyRef Name="Rev_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -497,10 +497,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Accomodation" Type="Self.Accomodation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Principal>
             <Dependent Role="Accomodation">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -509,10 +509,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payment">
-              <PropertyRef Name="PaymentID" />
+              <PropertyRef Name="Pay_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="PaymentID" />
+              <PropertyRef Name="Res_PaymentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -521,10 +521,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="Roo_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,10 +533,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Principal>
             <Dependent Role="Reservation">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -545,10 +545,10 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Principal>
             <Dependent Role="Review">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="Use_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -557,14 +557,14 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
-              <PropertyRef Name="ServiceID" />
+              <PropertyRef Name="Ser_ID" />
             </Principal>
             <Dependent Role="Room">
-              <PropertyRef Name="ServiceID" />
+              <PropertyRef Name="Ser_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ulacitbnb" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accomodation" EntityType="Self.Accomodation" />
           <EntitySet Name="Host" EntityType="Self.Host" />
           <EntitySet Name="Payment" EntityType="Self.Payment" />
@@ -654,101 +654,101 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UlacitBnBModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="UlacitBnBModelStoreContainer" CdmEntityContainer="ulacitbnb">
           <EntitySetMapping Name="Accomodation">
             <EntityTypeMapping TypeName="UlacitBnBModel.Accomodation">
               <MappingFragment StoreEntitySet="Accomodation">
-                <ScalarProperty Name="AccomodationID" ColumnName="AccomodationID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
-                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="HostID" ColumnName="HostID" />
+                <ScalarProperty Name="Acc_ID" ColumnName="Acc_ID" />
+                <ScalarProperty Name="Acc_Name" ColumnName="Acc_Name" />
+                <ScalarProperty Name="Acc_Country" ColumnName="Acc_Country" />
+                <ScalarProperty Name="Acc_Zipcode" ColumnName="Acc_Zipcode" />
+                <ScalarProperty Name="Acc_State" ColumnName="Acc_State" />
+                <ScalarProperty Name="Acc_Address" ColumnName="Acc_Address" />
+                <ScalarProperty Name="Acc_Description" ColumnName="Acc_Description" />
+                <ScalarProperty Name="Acc_Evaluation" ColumnName="Acc_Evaluation" />
+                <ScalarProperty Name="Rev_ID" ColumnName="Rev_ID" />
+                <ScalarProperty Name="Roo_ID" ColumnName="Roo_ID" />
+                <ScalarProperty Name="Hos_ID" ColumnName="Hos_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Host">
             <EntityTypeMapping TypeName="UlacitBnBModel.Host">
               <MappingFragment StoreEntitySet="Host">
-                <ScalarProperty Name="HostID" ColumnName="HostID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Hos_ID" ColumnName="Hos_ID" />
+                <ScalarProperty Name="Hos_Name" ColumnName="Hos_Name" />
+                <ScalarProperty Name="Hos_LastName" ColumnName="Hos_LastName" />
+                <ScalarProperty Name="Hos_Password" ColumnName="Hos_Password" />
+                <ScalarProperty Name="Hos_Description" ColumnName="Hos_Description" />
+                <ScalarProperty Name="Hos_Status" ColumnName="Hos_Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payment">
             <EntityTypeMapping TypeName="UlacitBnBModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Modality" ColumnName="Modality" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Pay_ID" ColumnName="Pay_ID" />
+                <ScalarProperty Name="Pay_Brand" ColumnName="Pay_Brand" />
+                <ScalarProperty Name="Pay_Type" ColumnName="Pay_Type" />
+                <ScalarProperty Name="Pay_Modality" ColumnName="Pay_Modality" />
+                <ScalarProperty Name="Pay_Date" ColumnName="Pay_Date" />
+                <ScalarProperty Name="Pay_Amount" ColumnName="Pay_Amount" />
+                <ScalarProperty Name="Pay_Taxes" ColumnName="Pay_Taxes" />
+                <ScalarProperty Name="Pay_Total" ColumnName="Pay_Total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reservation">
             <EntityTypeMapping TypeName="UlacitBnBModel.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ResolutionDate" ColumnName="ResolutionDate" />
-                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="Res_ID" ColumnName="Res_ID" />
+                <ScalarProperty Name="Res_StartDate" ColumnName="Res_StartDate" />
+                <ScalarProperty Name="Res_ReservationDate" ColumnName="Res_ReservationDate" />
+                <ScalarProperty Name="Res_EndDate" ColumnName="Res_EndDate" />
+                <ScalarProperty Name="Res_Status" ColumnName="Res_Status" />
+                <ScalarProperty Name="Res_Quantity" ColumnName="Res_Quantity" />
+                <ScalarProperty Name="Res_ResolutionDate" ColumnName="Res_ResolutionDate" />
+                <ScalarProperty Name="Res_PaymentID" ColumnName="Res_PaymentID" />
+                <ScalarProperty Name="Use_ID" ColumnName="Use_ID" />
+                <ScalarProperty Name="Roo_ID" ColumnName="Roo_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Review">
             <EntityTypeMapping TypeName="UlacitBnBModel.Review">
               <MappingFragment StoreEntitySet="Review">
-                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
-                <ScalarProperty Name="DateReview" ColumnName="DateReview" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Usefull" ColumnName="Usefull" />
-                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Rev_ID" ColumnName="Rev_ID" />
+                <ScalarProperty Name="Rev_DateReview" ColumnName="Rev_DateReview" />
+                <ScalarProperty Name="Rev_Rate" ColumnName="Rev_Rate" />
+                <ScalarProperty Name="Rev_Recommendation" ColumnName="Rev_Recommendation" />
+                <ScalarProperty Name="Rev_Comment" ColumnName="Rev_Comment" />
+                <ScalarProperty Name="Rev_Usefull" ColumnName="Rev_Usefull" />
+                <ScalarProperty Name="Rev_Tittle" ColumnName="Rev_Tittle" />
+                <ScalarProperty Name="Use_ID" ColumnName="Use_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="UlacitBnBModel.Room">
               <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
-                <ScalarProperty Name="BedQuantity" ColumnName="BedQuantity" />
-                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="Roo_ID" ColumnName="Roo_ID" />
+                <ScalarProperty Name="Roo_Price" ColumnName="Roo_Price" />
+                <ScalarProperty Name="Roo_Quantity" ColumnName="Roo_Quantity" />
+                <ScalarProperty Name="Roo_Type" ColumnName="Roo_Type" />
+                <ScalarProperty Name="Roo_Evaluation" ColumnName="Roo_Evaluation" />
+                <ScalarProperty Name="Roo_BedQuantity" ColumnName="Roo_BedQuantity" />
+                <ScalarProperty Name="Ser_ID" ColumnName="Ser_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="UlacitBnBModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Ser_ID" ColumnName="Ser_ID" />
+                <ScalarProperty Name="Ser_Name" ColumnName="Ser_Name" />
+                <ScalarProperty Name="Ser_Description" ColumnName="Ser_Description" />
+                <ScalarProperty Name="Ser_Type" ColumnName="Ser_Type" />
+                <ScalarProperty Name="Ser_Status" ColumnName="Ser_Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -766,15 +766,15 @@ warning 6002: The table/view 'ulacit-bnb-db.sys.database_firewall_rules' does no
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="UlacitBnBModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Identification" ColumnName="Identification" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Use_ID" ColumnName="Use_ID" />
+                <ScalarProperty Name="Use_Name" ColumnName="Use_Name" />
+                <ScalarProperty Name="Use_LastName" ColumnName="Use_LastName" />
+                <ScalarProperty Name="Use_Identification" ColumnName="Use_Identification" />
+                <ScalarProperty Name="Use_Password" ColumnName="Use_Password" />
+                <ScalarProperty Name="Use_Email" ColumnName="Use_Email" />
+                <ScalarProperty Name="Use_Status" ColumnName="Use_Status" />
+                <ScalarProperty Name="Use_BirthDate" ColumnName="Use_BirthDate" />
+                <ScalarProperty Name="Use_Phone" ColumnName="Use_Phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

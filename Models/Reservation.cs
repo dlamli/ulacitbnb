@@ -14,16 +14,16 @@ namespace ulacit_bnb.Models
     
     public partial class Reservation
     {
-        public int ReservationID { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime ReservationDate { get; set; }
-        public System.DateTime EndDate { get; set; }
-        public string Status { get; set; }
-        public decimal Quantity { get; set; }
-        public string ResolutionDate { get; set; }
-        public int PaymentID { get; set; }
-        public int UserID { get; set; }
-        public int RoomID { get; set; }
+        public int Res_ID { get; set; }
+        public System.DateTime Res_StartDate { get; set; }
+        public System.DateTime Res_ReservationDate { get; set; }
+        public System.DateTime Res_EndDate { get; set; }
+        public string Res_Status { get; set; }
+        public decimal Res_Quantity { get; set; }
+        public string Res_ResolutionDate { get; set; }
+        public int Res_PaymentID { get; set; }
+        public int Use_ID { get; set; }
+        public int Roo_ID { get; set; }
     
         public virtual Payment Payment { get; set; }
         public virtual Room Room { get; set; }

@@ -21,17 +21,17 @@ namespace ulacit_bnb.Models
             this.Review = new HashSet<Review>();
         }
     
-        public int UserID { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Identification { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Status { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string Phone { get; set; }
+        public int Use_ID { get; set; }
+        public string Use_Name { get; set; }
+        public string Use_LastName { get; set; }
+        public string Use_Identification { get; set; }
+        public string Use_Password { get; set; }
+        public string Use_Email { get; set; }
+        public string Use_Status { get; set; }
+        public System.DateTime Use_BirthDate { get; set; }
+        public string Use_Phone { get; set; }
         public string Token { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
