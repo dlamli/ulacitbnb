@@ -16,6 +16,10 @@ namespace ulacit_bnb.Controllers
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
+        /**
+         * Authentication
+         * ====================
+         */
         [HttpPost]
         [Route("authenticate")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
@@ -80,6 +84,10 @@ namespace ulacit_bnb.Controllers
             }
         }
 
+        /**
+         * Registration
+         * ====================
+         */
         [HttpPost]
         [Route("register")]
         public IHttpActionResult Register(User user)
@@ -142,5 +150,6 @@ namespace ulacit_bnb.Controllers
             return Ok();
 
         }
+      
     }
 }
