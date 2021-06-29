@@ -14,6 +14,13 @@ namespace ulacit_bnb.Models
     
     public partial class Accomodation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Accomodation()
+        {
+            this.Review = new HashSet<Review>();
+            this.Room = new HashSet<Room>();
+        }
+    
         public int Acc_ID { get; set; }
         public string Acc_Name { get; set; }
         public string Acc_Country { get; set; }
@@ -22,12 +29,12 @@ namespace ulacit_bnb.Models
         public string Acc_Address { get; set; }
         public string Acc_Description { get; set; }
         public string Acc_Evaluation { get; set; }
-        public int Rev_ID { get; set; }
-        public int Roo_ID { get; set; }
         public int Hos_ID { get; set; }
     
         public virtual Host Host { get; set; }
-        public virtual Review Review { get; set; }
-        public virtual Room Room { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Room { get; set; }
     }
 }

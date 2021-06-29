@@ -17,7 +17,6 @@ namespace ulacit_bnb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.Accomodation = new HashSet<Accomodation>();
             this.Reservation = new HashSet<Reservation>();
         }
     
@@ -28,9 +27,9 @@ namespace ulacit_bnb.Models
         public string Roo_Evaluation { get; set; }
         public decimal Roo_BedQuantity { get; set; }
         public int Ser_ID { get; set; }
+        public int Acc_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Accomodation> Accomodation { get; set; }
+        public virtual Accomodation Accomodation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }
         public virtual Service Service { get; set; }
