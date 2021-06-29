@@ -14,14 +14,15 @@ namespace ulacit_bnb.Controllers
     [RoutePrefix("api/service")]
     public class ServiceController : ApiController
     {
-        //GET GetId
+        //SQL Connection
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString);
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
             Service service = new Service();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Ser_ID]
                                                                     ,[Ser_Name]
@@ -31,7 +32,6 @@ namespace ulacit_bnb.Controllers
                                                              FROM [dbo].[Service]
                                                             WHERE
                                                             	 Ser_ID = @Ser_ID", sqlConnection);
-
                     sqlCommand.Parameters.AddWithValue("Ser_ID", id);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -48,20 +48,18 @@ namespace ulacit_bnb.Controllers
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
             return Ok(service);
         }
-
-        //GET
+        //------------------------------------------------------------------------------
         [HttpGet]
         public IHttpActionResult GetAll()
         {
             List<Service> services = new List<Service>();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Ser_ID]
                                                                     ,[Ser_Name]
@@ -91,8 +89,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(services);
         }
-
-        //POST
+        //------------------------------------------------------------------------------
         [HttpPost]
         public IHttpActionResult EnterService(Service service)
         {
@@ -102,7 +99,7 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[Service](
                                                                   Ser_Name
@@ -131,8 +128,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(service);
         }
-
-        //PUT
+        //------------------------------------------------------------------------------
         [HttpPut]
         public IHttpActionResult UpdateService(Service service)
         {
@@ -142,7 +138,7 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"UPDATE [dbo].[Service]
                                                             SET Ser_Name = @Ser_Name
@@ -159,29 +155,34 @@ namespace ulacit_bnb.Controllers
 
 
                     sqlConnection.Open();
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    int rowsAfected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
+                    if(rowsAfected <= 0)
+                    {
+                        return BadRequest($"Service with ID {service.Ser_ID} doesn't exist in database.");
+                    }
+                    else
+                    {
+                    return Ok(rowsAfected);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-            return Ok(service);
         }
-
-        //DELETE
+        //------------------------------------------------------------------------------
         [HttpDelete]
         public IHttpActionResult DeleteService(int id)
         {
-
             if (id <= 0)
             {
                 return BadRequest($"Service with ID:{id} not found in database.");
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"DELETE FROM [dbo].[Service]
                                                             WHERE Ser_ID = @Ser_ID", sqlConnection);
@@ -189,7 +190,7 @@ namespace ulacit_bnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Ser_ID", id);
                     sqlConnection.Open();
 
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    int rowsAfected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
 
                 }
@@ -200,6 +201,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(id);
         }
+        //------------------------------------------------------------------------------
 
     }
 }
