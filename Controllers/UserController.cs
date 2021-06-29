@@ -111,7 +111,7 @@ namespace ulacit_bnb.Controllers
 
         //POST
         [HttpPost]
-        public IHttpActionResult Ingresar(User user)
+        public IHttpActionResult Enter(User user)
         {
             if (user == null)
             {
@@ -163,7 +163,7 @@ namespace ulacit_bnb.Controllers
 
         //PUT
         [HttpPut]
-        public IHttpActionResult Actualizar(User user)
+        public IHttpActionResult Update(User user)
         {
             if (user == null)
             {
@@ -209,7 +209,7 @@ namespace ulacit_bnb.Controllers
 
         //DELETE
         [HttpDelete]
-        public IHttpActionResult Eliminar(int id)
+        public IHttpActionResult Delete(int id)
         {
 
             if (id <= 0)
