@@ -30,6 +30,7 @@ namespace ulacit_bnb.Models
         public string Use_Status { get; set; }
         public System.DateTime Use_BirthDate { get; set; }
         public string Use_Phone { get; set; }
+
         public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

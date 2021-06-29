@@ -14,12 +14,6 @@ namespace ulacit_bnb.Models
     
     public partial class Review
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Review()
-        {
-            this.Accomodation = new HashSet<Accomodation>();
-        }
-    
         public int Rev_ID { get; set; }
         public System.DateTime Rev_DateReview { get; set; }
         public int Rev_Rate { get; set; }
@@ -28,9 +22,9 @@ namespace ulacit_bnb.Models
         public string Rev_Usefull { get; set; }
         public string Rev_Tittle { get; set; }
         public int Use_ID { get; set; }
+        public int Acc_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Accomodation> Accomodation { get; set; }
+        public virtual Accomodation Accomodation { get; set; }
         public virtual User User { get; set; }
     }
 }
