@@ -95,7 +95,7 @@ namespace ulacit_bnb.Controllers
         {
             if (service == null)
             {
-                return BadRequest("Please enter required fields to create a service.");
+                return BadRequest("Please enter required fields to create an service.");
             }
             try
             {
@@ -118,7 +118,7 @@ namespace ulacit_bnb.Controllers
 
 
                     sqlConnection.Open();
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
                 }
             }
@@ -155,15 +155,15 @@ namespace ulacit_bnb.Controllers
 
 
                     sqlConnection.Open();
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
-                    if(rowsAfected <= 0)
+                    if(rowsAffected <= 0)
                     {
                         return BadRequest($"Service with ID {service.Ser_ID} doesn't exist in database.");
                     }
                     else
                     {
-                    return Ok(rowsAfected);
+                    return Ok(rowsAffected);
                     }
                 }
             }

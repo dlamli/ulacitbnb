@@ -143,7 +143,7 @@ namespace ulacit_bnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Hos_ID", accomodation.Hos_ID);
 
                     sqlConnection.Open();
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
                 }
             }
@@ -188,15 +188,15 @@ namespace ulacit_bnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Hos_ID", accomodation.Hos_ID);
 
                     sqlConnection.Open();
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
-                    if (rowsAfected <= 0)
+                    if (rowsAffected <= 0)
                     {
                         return BadRequest($"Accomodation with ID {accomodation.Acc_ID} doesn't exist in the database.");
                     }
                     else 
                     {
-                        return Ok(rowsAfected);
+                        return Ok(rowsAffected);
                     }
                 }
             }

@@ -15,14 +15,15 @@ namespace ulacit_bnb.Controllers
     [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
-        //GET GetId
+        //SQL Connection
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString);
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
             User user = new User();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Use_ID]
                                                                  ,[Use_Name]
@@ -62,15 +63,14 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(user);
         }
-
-        //GET
+        //------------------------------------------------------------------------------
         [HttpGet]
         public IHttpActionResult GetAll()
         {
             List<User> users = new List<User>();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Use_ID]
                                                               ,[Use_Name]
@@ -108,10 +108,9 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(users);
         }
-
-        //POST
+        //------------------------------------------------------------------------------
         [HttpPost]
-        public IHttpActionResult Enter(User user)
+        public IHttpActionResult EnterUser(User user)
         {
             if (user == null)
             {
@@ -119,7 +118,7 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[User](
                                                                   [Use_Name]
@@ -160,10 +159,9 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(user);
         }
-
-        //PUT
+        //------------------------------------------------------------------------------
         [HttpPut]
-        public IHttpActionResult Update(User user)
+        public IHttpActionResult UpdateUser(User user)
         {
             if (user == null)
             {
@@ -171,7 +169,7 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"UPDATE [dbo].[User]
                                                             SET Use_Name = @Use_Name
@@ -196,25 +194,30 @@ namespace ulacit_bnb.Controllers
 
 
                     sqlConnection.Open();
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
+                    if (rowsAffected <= 0)
+                    {
+                        return BadRequest($"User with ID {user.Use_ID} doesn't exist in database.");
+                    }
+                    else
+                    {
+                        return Ok(rowsAffected);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-            return Ok(user);
         }
-
-        //DELETE
+        //------------------------------------------------------------------------------
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult DeleteUser(int id)
         {
-
             if (id <= 0)
             {
-                return BadRequest($"Usse with ID:{id} not found in database.");
+                return BadRequest($"User with ID:{id} not found in database.");
             }
             try
             {
@@ -237,5 +240,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(id);
         }
+        //------------------------------------------------------------------------------
     }
 }
