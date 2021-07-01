@@ -32,7 +32,7 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UbnbAzureSQL"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Use_ID
                                                                  ,Use_Name
