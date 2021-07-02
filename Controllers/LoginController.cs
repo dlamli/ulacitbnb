@@ -16,23 +16,18 @@ namespace ulacit_bnb.Controllers
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-        /**
-         * Authentication
-         * ====================
-         */
+        //SQL Connection
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
+        
         [HttpPost]
         [Route("authenticate")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
-            //LoginRequest null
             if (loginRequest == null) return BadRequest("Complete the fields to login.");
-
-            //New instance of Usuario
             User user = new User();
-
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Use_ID
                                                                  ,Use_Name
@@ -83,11 +78,7 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
         }
-
-        /**
-         * Registration
-         * ====================
-         */
+        //------------------------------------------------------------------------------
         [HttpPost]
         [Route("register")]
         public IHttpActionResult Register(User user)
@@ -96,7 +87,7 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[User](               
                                                                   Use_Name
@@ -126,30 +117,19 @@ namespace ulacit_bnb.Controllers
                     sqlCommand.Parameters.AddWithValue("Use_BirthDate", user.Use_BirthDate);
                     sqlCommand.Parameters.AddWithValue("Use_Phone", user.Use_Phone);
 
-
                     sqlConnection.Open();
-
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
-
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
-
-
-                    if (filasAfectadas > 0) return Ok(user);
-
-
+                    if (rowsAffected > 0) return Ok(user);
                 }
-
-
             }
             catch (Exception ex)
             {
 
                 return InternalServerError(ex);
             }
-
             return Ok();
-
         }
-      
+        //------------------------------------------------------------------------------
     }
 }

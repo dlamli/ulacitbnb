@@ -16,7 +16,7 @@ namespace ulacit_bnb.Controllers
     public class UserController : ApiController
     {
         //SQL Connection
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString);
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
@@ -221,7 +221,7 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString))
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"DELETE FROM [dbo].[User]
                                                             WHERE Use_ID = @Use_ID", sqlConnection);

@@ -15,7 +15,7 @@ namespace ulacit_bnb.Controllers
     public class ServiceController : ApiController
     {
         //SQL Connection
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ULACITBnB"].ConnectionString);
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
