@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using ulacit_bnb.Models;
 
@@ -18,7 +19,7 @@ namespace ulacit_bnb.Controllers
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
-            Host host = new Host();
+            Host host = null;
             
             try
             {
@@ -32,12 +33,15 @@ namespace ulacit_bnb.Controllers
                     SqlDataReader sqlDataReader = selectHostById.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
-                        host.Hos_ID = sqlDataReader.GetInt32(0);
-                        host.Hos_Name = sqlDataReader.GetString(1);
-                        host.Hos_LastName = sqlDataReader.GetString(2);
-                        host.Hos_Password = sqlDataReader.GetString(3);
-                        host.Hos_Description = sqlDataReader.GetString(4);
-                        host.Hos_Status = sqlDataReader.GetString(5);
+                        host = new Host
+                        {
+                            Hos_ID = sqlDataReader.GetInt32(0),
+                            Hos_Name = sqlDataReader.GetString(1),
+                            Hos_LastName = sqlDataReader.GetString(2),
+                            Hos_Password = sqlDataReader.GetString(3),
+                            Hos_Description = sqlDataReader.GetString(4),
+                            Hos_Status = sqlDataReader.GetString(5)
+                        };
                     }
                 }
 
@@ -60,7 +64,7 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectAllHosts = new SqlCommand(@"SELECT * FROM [Host]", sqlConnection);
+                    SqlCommand selectAllHosts = new SqlCommand("SELECT * FROM Host", sqlConnection);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectAllHosts.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -83,6 +87,34 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
             return Ok(hosts);
+        }
+
+        // ===================================================================================================
+        [HttpPost]
+        public HttpResponseMessage CreateNewHost(Host host)
+        {
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand insertNewHost = new SqlCommand(@"INSERT INTO Host 
+                                                                (Hos_Name, Hos_LastName, Hos_Password, Hos_Description, Hos_Status)
+                                                                VALUES (@Hos_Name, @Hos_LastName, @Hos_Password, @Hos_Description, @Hos_Status)", sqlConnection);
+                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Hos_Name);
+                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.Hos_LastName);
+                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Hos_Password);
+                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Hos_Description);
+                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Hos_Status);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(ex.ToString());
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED: {host.Hos_Name}");
         }
 
     }
