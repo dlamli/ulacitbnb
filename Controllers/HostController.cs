@@ -17,7 +17,7 @@ namespace ulacit_bnb.Controllers
 
         // ===================================================================================================
         [HttpGet]
-        public IHttpActionResult GetId(int id)
+        public IHttpActionResult GetHost(int id)
         {
             Host host = null;
             
@@ -55,7 +55,7 @@ namespace ulacit_bnb.Controllers
 
         // ===================================================================================================
         [HttpGet]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult GetAllHosts()
         {
             List<Host> hosts = new List<Host>();
 
@@ -115,6 +115,43 @@ namespace ulacit_bnb.Controllers
                 return Request.CreateResponse(ex.ToString());
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED: {host.Hos_Name}");
+        }
+
+        // ===================================================================================================
+        [HttpPut]
+        public HttpResponseMessage UpdateHost(Host host)
+        {
+            if (host == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "Host not found");
+            }
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand insertNewHost = new SqlCommand(@"Update Host 
+                                                                SET Hos_Name = @Hos_Name,
+                                                                Hos_LastName = @Hos_LastName,
+                                                                Hos_Password = Hos_Password,
+                                                                Hos_Description = @Hos_Description,
+                                                                Hos_Status = @Hos_Status
+                                                                WHERE Hos_ID = @Hos_ID", sqlConnection);
+                    insertNewHost.Parameters.AddWithValue("Hos_ID", host.Hos_ID);
+                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Hos_Name);
+                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.Hos_LastName);
+                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Hos_Password);
+                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Hos_Description);
+                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Hos_Status);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Hos_Name} UPDATED");
         }
 
     }
