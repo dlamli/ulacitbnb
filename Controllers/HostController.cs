@@ -130,7 +130,7 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand insertNewHost = new SqlCommand(@"Update Host 
+                    SqlCommand insertNewHost = new SqlCommand(@"UPDATE Host 
                                                                 SET Hos_Name = @Hos_Name,
                                                                 Hos_LastName = @Hos_LastName,
                                                                 Hos_Password = Hos_Password,
@@ -152,6 +152,33 @@ namespace ulacit_bnb.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Hos_Name} UPDATED");
+        }
+
+        // ===================================================================================================
+        [HttpDelete]
+        public HttpResponseMessage RemoveHost(int id)
+        {
+            if (id < 1)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid Host ID");
+            }
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand insertNewHost = new SqlCommand(@"DELETE FROM Host
+                                                                WHERE Hos_ID = @Hos_ID", sqlConnection);
+                    insertNewHost.Parameters.AddWithValue("Hos_ID", id);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETD");
         }
 
     }
