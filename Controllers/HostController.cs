@@ -35,12 +35,12 @@ namespace ulacit_bnb.Controllers
                     {
                         host = new Host
                         {
-                            Hos_ID = sqlDataReader.GetInt32(0),
-                            Hos_Name = sqlDataReader.GetString(1),
-                            Hos_LastName = sqlDataReader.GetString(2),
-                            Hos_Password = sqlDataReader.GetString(3),
-                            Hos_Description = sqlDataReader.GetString(4),
-                            Hos_Status = sqlDataReader.GetString(5)
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            LastName = sqlDataReader.GetString(2),
+                            Password = sqlDataReader.GetString(3),
+                            Description = sqlDataReader.GetString(4),
+                            Status = sqlDataReader.GetString(5)
                         };
                     }
                 }
@@ -71,12 +71,12 @@ namespace ulacit_bnb.Controllers
                     {
                         Host host = new Host
                         {
-                            Hos_ID = sqlDataReader.GetInt32(0),
-                            Hos_Name = sqlDataReader.GetString(1),
-                            Hos_LastName = sqlDataReader.GetString(2),
-                            Hos_Password = sqlDataReader.GetString(3),
-                            Hos_Description = sqlDataReader.GetString(4),
-                            Hos_Status = sqlDataReader.GetString(5)
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            LastName = sqlDataReader.GetString(2),
+                            Password = sqlDataReader.GetString(3),
+                            Description = sqlDataReader.GetString(4),
+                            Status = sqlDataReader.GetString(5)
                         };
                         hosts.Add(host);
                     }
@@ -101,11 +101,11 @@ namespace ulacit_bnb.Controllers
                     SqlCommand insertNewHost = new SqlCommand(@"INSERT INTO Host 
                                                                 (Hos_Name, Hos_LastName, Hos_Password, Hos_Description, Hos_Status)
                                                                 VALUES (@Hos_Name, @Hos_LastName, @Hos_Password, @Hos_Description, @Hos_Status)", sqlConnection);
-                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Hos_Name);
-                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.Hos_LastName);
-                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Hos_Password);
-                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Hos_Description);
-                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Hos_Status);
+                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Name);
+                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.LastName);
+                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Password);
+                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Description);
+                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Status);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
                 }
@@ -114,7 +114,7 @@ namespace ulacit_bnb.Controllers
             {
                 return Request.CreateResponse(ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED: {host.Hos_Name}");
+            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED: {host.Name}");
         }
 
         // ===================================================================================================
@@ -137,12 +137,12 @@ namespace ulacit_bnb.Controllers
                                                                 Hos_Description = @Hos_Description,
                                                                 Hos_Status = @Hos_Status
                                                                 WHERE Hos_ID = @Hos_ID", sqlConnection);
-                    insertNewHost.Parameters.AddWithValue("Hos_ID", host.Hos_ID);
-                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Hos_Name);
-                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.Hos_LastName);
-                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Hos_Password);
-                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Hos_Description);
-                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Hos_Status);
+                    insertNewHost.Parameters.AddWithValue("Hos_ID", host.ID);
+                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Name);
+                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.LastName);
+                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Password);
+                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Description);
+                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Status);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
                 }
@@ -151,7 +151,7 @@ namespace ulacit_bnb.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Hos_Name} UPDATED");
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Name} UPDATED");
         }
 
         // ===================================================================================================
@@ -178,7 +178,7 @@ namespace ulacit_bnb.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETD");
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETED");
         }
 
     }
