@@ -17,9 +17,13 @@ namespace ulacit_bnb.Controllers
         readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
 
         // ===================================================================================================
-        [HttpGet]
-        public IHttpActionResult GetReview(int id)
+        [HttpGet, Route("{reviewId:int}")]
+        public IHttpActionResult GetReview(int reviewId)
         {
+            if (reviewId < 1)
+            {
+                return BadRequest("Invalid review ID");
+            }
             Review review = null;
 
             try
@@ -29,7 +33,7 @@ namespace ulacit_bnb.Controllers
                 {
                     SqlCommand selectReviewById = new SqlCommand(@"SELECT
                                                                         Rev_ID,
-                                                                        RevRev_Date,
+                                                                        Rev_Date,
                                                                         Rev_Rate,
                                                                         Rev_Recommendation,
                                                                         Rev_Comment,
@@ -39,7 +43,7 @@ namespace ulacit_bnb.Controllers
                                                                         Acc_ID 
                                                                     FROM Review
                                                                     WHERE Rev_ID = @Rev_ID", sqlConnection);
-                    selectReviewById.Parameters.AddWithValue("Rev_ID", id);
+                    selectReviewById.Parameters.AddWithValue("Rev_ID", reviewId);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectReviewById.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -119,8 +123,7 @@ namespace ulacit_bnb.Controllers
 
 
         // ===================================================================================================
-        [HttpGet]
-        [Route("~/api/user/{userId:int}/reviews")]
+        [HttpGet, Route("~/api/user/{userId:int}/reviews")]
         public IHttpActionResult GetUserReviews(int userId)
         {
             Review review = null;
@@ -130,7 +133,7 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectReviewById = new SqlCommand(@"SELECT 
+                    SqlCommand selectUserReviews = new SqlCommand(@"SELECT 
                                                                         Rev_ID,
                                                                         Rev_Date,
                                                                         Rev_Rate,
@@ -142,9 +145,9 @@ namespace ulacit_bnb.Controllers
                                                                         Acc_ID
                                                                     FROM Review
                                                                     WHERE Use_ID = @Use_ID", sqlConnection);
-                    selectReviewById.Parameters.AddWithValue("Use_ID", userId);
+                    selectUserReviews.Parameters.AddWithValue("Use_ID", userId);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = selectReviewById.ExecuteReader();
+                    SqlDataReader sqlDataReader = selectUserReviews.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
                         review = new Review
@@ -171,8 +174,7 @@ namespace ulacit_bnb.Controllers
         }
 
         // ===================================================================================================
-        [HttpGet]
-        [Route("~/api/accomodation/{accomodationId:int}/reviews")]
+        [HttpGet, Route("~/api/accomodation/{accomodationId:int}/reviews")]
         public IHttpActionResult GetAccomodationReviews(int accomodationId)
         {
             Review review = null;
@@ -182,21 +184,21 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectReviewById = new SqlCommand(@"SELECT
-                                                                        Rev_ID,
-                                                                        Rev_Date,
-                                                                        Rev_Rate,
-                                                                        Rev_Recommendation,
-                                                                        Rev_Comment,
-                                                                        Rev_Usefull,
-                                                                        Rev_Title,
-                                                                        Use_ID,
-                                                                        Acc_ID
-                                                                    FROM Review
-                                                                    WHERE Acc_ID = @Acc_ID", sqlConnection);
-                    selectReviewById.Parameters.AddWithValue("Acc_ID", accomodationId);
+                    SqlCommand selectAccomodationReviews = new SqlCommand(@"SELECT
+                                                                                Rev_ID,
+                                                                                Rev_Date,
+                                                                                Rev_Rate,
+                                                                                Rev_Recommendation,
+                                                                                Rev_Comment,
+                                                                                Rev_Usefull,
+                                                                                Rev_Title,
+                                                                                Use_ID,
+                                                                                Acc_ID
+                                                                            FROM Review
+                                                                            WHERE Acc_ID = @Acc_ID", sqlConnection);
+                    selectAccomodationReviews.Parameters.AddWithValue("Acc_ID", accomodationId);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = selectReviewById.ExecuteReader();
+                    SqlDataReader sqlDataReader = selectAccomodationReviews.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
                         review = new Review
@@ -226,13 +228,18 @@ namespace ulacit_bnb.Controllers
         [HttpPost]
         public HttpResponseMessage CreateNewReview(Review review)
         {
+            if (review == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Required fields to create review are invalid");
+            }
+
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand insertNewReview = new SqlCommand(@"INSERT INTO Review 
-                                                                (Rev_Date, Rev_Rate, Rev_Recommendation, Rev_Comment, Rev_Usefull, Rev_Title, Use_ID, Acc_ID)
+                                                                    (Rev_Date, Rev_Rate, Rev_Recommendation, Rev_Comment, Rev_Usefull, Rev_Title, Use_ID, Acc_ID)
                                                                 VALUES (@Rev_Date, @Rev_Rate, @Rev_Recommendation, @Rev_Comment, @Rev_Usefull, @Rev_Title, @Use_ID, @Acc_ID)", sqlConnection);
                     insertNewReview.Parameters.AddWithValue("Rev_Date", review.Date);
                     insertNewReview.Parameters.AddWithValue("Rev_Rate", review.Rate);
@@ -250,7 +257,7 @@ namespace ulacit_bnb.Controllers
             {
                 return Request.CreateResponse(ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"NEW REVIEW CREATED SUCCESFULLY: {review.Title}!");
+            return Request.CreateResponse(HttpStatusCode.OK, $"NEW REVIEW CREATED SUCCESFULLY: {review.Title}");
         }
 
 
@@ -260,7 +267,7 @@ namespace ulacit_bnb.Controllers
         {
             if (review == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "REVIEW NOT FOUND!");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Required fields to update review are invalid");
             }
 
             try
@@ -268,43 +275,43 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand insertNewReview = new SqlCommand(@"UPDATE Review 
+                    SqlCommand updateReview = new SqlCommand(@"UPDATE Review 
                                                                 SET Rev_Date = @Rev_Date,
-                                                                Rev_Rate = @Rev_Rate,
-                                                                Rev_Recommendation = @Rev_Recommendation,
-                                                                Rev_Comment = @Rev_Comment,
-                                                                Rev_Usefull = @Rev_Usefull,
-                                                                Rev_Title = @Rev_Title,
-                                                                Use_ID = @Use_ID,
-                                                                Acc_ID = @Acc_ID
+                                                                    Rev_Rate = @Rev_Rate,
+                                                                    Rev_Recommendation = @Rev_Recommendation,
+                                                                    Rev_Comment = @Rev_Comment,
+                                                                    Rev_Usefull = @Rev_Usefull,
+                                                                    Rev_Title = @Rev_Title,
+                                                                    Use_ID = @Use_ID,
+                                                                    Acc_ID = @Acc_ID
                                                                 WHERE Rev_ID = @Rev_ID", sqlConnection);
-                    insertNewReview.Parameters.AddWithValue("Rev_ID", review.ID);
-                    insertNewReview.Parameters.AddWithValue("Rev_Date", review.Date);
-                    insertNewReview.Parameters.AddWithValue("Rev_Rate", review.Rate);
-                    insertNewReview.Parameters.AddWithValue("Rev_Recommendation", review.Recommendation);
-                    insertNewReview.Parameters.AddWithValue("Rev_Comment", review.Comment);
-                    insertNewReview.Parameters.AddWithValue("Rev_Usefull", review.Usefull);
-                    insertNewReview.Parameters.AddWithValue("Rev_Title", review.Title);
-                    insertNewReview.Parameters.AddWithValue("Use_ID", review.UserID);
-                    insertNewReview.Parameters.AddWithValue("Acc_ID", review.AccomodationID);
+                    updateReview.Parameters.AddWithValue("Rev_ID", review.ID);
+                    updateReview.Parameters.AddWithValue("Rev_Date", review.Date);
+                    updateReview.Parameters.AddWithValue("Rev_Rate", review.Rate);
+                    updateReview.Parameters.AddWithValue("Rev_Recommendation", review.Recommendation);
+                    updateReview.Parameters.AddWithValue("Rev_Comment", review.Comment);
+                    updateReview.Parameters.AddWithValue("Rev_Usefull", review.Usefull);
+                    updateReview.Parameters.AddWithValue("Rev_Title", review.Title);
+                    updateReview.Parameters.AddWithValue("Use_ID", review.UserID);
+                    updateReview.Parameters.AddWithValue("Acc_ID", review.AccomodationID);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = insertNewReview.ExecuteReader();
+                    SqlDataReader sqlDataReader = updateReview.ExecuteReader();
                 }
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"REVIEW {review.Title} UPDATED SUCCESFULLY!");
+            return Request.CreateResponse(HttpStatusCode.OK, $"REVIEW {review.Title} UPDATED SUCCESFULLY");
         }
 
         // ===================================================================================================
-        [HttpDelete]
-        public HttpResponseMessage RemoveReview(int id)
+        [HttpDelete, Route("{reviewId:int}")]
+        public HttpResponseMessage RemoveReview(int reviewId)
         {
-          if (id < 1)
+          if (reviewId < 1)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "INVALID REVIEW ID");
+                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid review ID");
             }
 
             try
@@ -312,11 +319,11 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand insertNewReview = new SqlCommand(@"DELETE Review
-                                                                    WHERE Rev_ID = @Rev_ID", sqlConnection);
-                    insertNewReview.Parameters.AddWithValue("Rev_ID", id);
+                    SqlCommand deleteReview = new SqlCommand(@"DELETE Review
+                                                                  WHERE Rev_ID = @Rev_ID", sqlConnection);
+                    deleteReview.Parameters.AddWithValue("Rev_ID", reviewId);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = insertNewReview.ExecuteReader();
+                    SqlDataReader sqlDataReader = deleteReview.ExecuteReader();
                 }
             }
             catch (Exception ex)

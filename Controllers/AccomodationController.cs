@@ -18,7 +18,7 @@ namespace ulacit_bnb.Controllers
         //SQL Connection
         SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
 
-        [HttpGet]
+        [HttpGet, Route("{id:int}")]
         public IHttpActionResult GetId(int id)
         {
             Accomodation accomodation = new Accomodation();
