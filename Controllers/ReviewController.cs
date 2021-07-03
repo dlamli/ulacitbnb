@@ -27,7 +27,17 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectReviewById = new SqlCommand(@"SELECT * FROM Review
+                    SqlCommand selectReviewById = new SqlCommand(@"SELECT
+                                                                        Rev_ID,
+                                                                        RevRev_Date,
+                                                                        Rev_Rate,
+                                                                        Rev_Recommendation,
+                                                                        Rev_Comment,
+                                                                        Rev_Usefull,
+                                                                        Rev_Title,
+                                                                        Use_ID,
+                                                                        Acc_ID 
+                                                                    FROM Review
                                                                     WHERE Rev_ID = @Rev_ID", sqlConnection);
                     selectReviewById.Parameters.AddWithValue("Rev_ID", id);
                     sqlConnection.Open();
@@ -68,7 +78,17 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectAllReviews = new SqlCommand("SELECT * FROM Review", sqlConnection);
+                    SqlCommand selectAllReviews = new SqlCommand(@"SELECT 
+                                                                        Rev_ID,
+                                                                        Rev_Date,
+                                                                        Rev_Rate,
+                                                                        Rev_Recommendation,
+                                                                        Rev_Comment,
+                                                                        Rev_Usefull,
+                                                                        Rev_Title,
+                                                                        Use_ID,
+                                                                        Acc_ID
+                                                                  FROM Review", sqlConnection);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectAllReviews.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -110,7 +130,17 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectReviewById = new SqlCommand(@"SELECT * FROM Review
+                    SqlCommand selectReviewById = new SqlCommand(@"SELECT 
+                                                                        Rev_ID,
+                                                                        Rev_Date,
+                                                                        Rev_Rate,
+                                                                        Rev_Recommendation,
+                                                                        Rev_Comment,
+                                                                        Rev_Usefull,
+                                                                        Rev_Title,
+                                                                        Use_ID,
+                                                                        Acc_ID
+                                                                    FROM Review
                                                                     WHERE Use_ID = @Use_ID", sqlConnection);
                     selectReviewById.Parameters.AddWithValue("Use_ID", userId);
                     sqlConnection.Open();
@@ -152,7 +182,17 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectReviewById = new SqlCommand(@"SELECT * FROM Review
+                    SqlCommand selectReviewById = new SqlCommand(@"SELECT
+                                                                        Rev_ID,
+                                                                        Rev_Date,
+                                                                        Rev_Rate,
+                                                                        Rev_Recommendation,
+                                                                        Rev_Comment,
+                                                                        Rev_Usefull,
+                                                                        Rev_Title,
+                                                                        Use_ID,
+                                                                        Acc_ID
+                                                                    FROM Review
                                                                     WHERE Acc_ID = @Acc_ID", sqlConnection);
                     selectReviewById.Parameters.AddWithValue("Acc_ID", accomodationId);
                     sqlConnection.Open();
