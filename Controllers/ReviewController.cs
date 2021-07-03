@@ -39,9 +39,9 @@ namespace ulacit_bnb.Controllers
                             ID = sqlDataReader.GetInt32(0),
                             Date = sqlDataReader.GetDateTime(1),
                             Rate = sqlDataReader.GetInt32(2),
-                            Recommendation = sqlDataReader.GetString(3),
+                            Recommendation = sqlDataReader.GetBoolean(3),
                             Comment = sqlDataReader.GetString(4),
-                            Usefull = sqlDataReader.GetString(5),
+                            Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
                             UserID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
@@ -78,9 +78,9 @@ namespace ulacit_bnb.Controllers
                             ID = sqlDataReader.GetInt32(0),
                             Date = sqlDataReader.GetDateTime(1),
                             Rate = sqlDataReader.GetInt32(2),
-                            Recommendation = sqlDataReader.GetString(3),
+                            Recommendation = sqlDataReader.GetBoolean(3),
                             Comment = sqlDataReader.GetString(4),
-                            Usefull = sqlDataReader.GetString(5),
+                            Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
                             UserID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
