@@ -85,6 +85,7 @@ namespace ulacit_bnb.Controllers
                             UserID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
                         };
+                        reviews.Add(review);
                     }
                 }
 
