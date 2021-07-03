@@ -188,7 +188,7 @@ namespace ulacit_bnb.Controllers
                 using (sqlConnection)
                 {
                     SqlCommand insertNewReview = new SqlCommand(@"DELETE Review
-                                                                    WEHRE Rev_ID = @Rev_ID", sqlConnection);
+                                                                    WHERE Rev_ID = @Rev_ID", sqlConnection);
                     insertNewReview.Parameters.AddWithValue("Rev_ID", id);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = insertNewReview.ExecuteReader();
