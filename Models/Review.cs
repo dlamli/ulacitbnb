@@ -11,8 +11,5 @@ namespace ulacit_bnb.Models
         public string Title { get; set; }
         public int UserID { get; set; }
         public int AccomodationID { get; set; }
-    
-        public virtual Accomodation Accomodation { get; set; }
-        public virtual User User { get; set; }
     }
 }

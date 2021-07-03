@@ -97,6 +97,91 @@ namespace ulacit_bnb.Controllers
             return Ok(reviews);
         }
 
+
+        // ===================================================================================================
+        [HttpGet]
+        [Route("~/api/user/{userId:int}/reviews")]
+        public IHttpActionResult GetUserReviews(int userId)
+        {
+            Review review = null;
+
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand selectReviewById = new SqlCommand(@"SELECT * FROM Review
+                                                                    WHERE Use_ID = @Use_ID", sqlConnection);
+                    selectReviewById.Parameters.AddWithValue("Use_ID", userId);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = selectReviewById.ExecuteReader();
+                    while (sqlDataReader.Read())
+                    {
+                        review = new Review
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Date = sqlDataReader.GetDateTime(1),
+                            Rate = sqlDataReader.GetInt32(2),
+                            Recommendation = sqlDataReader.GetBoolean(3),
+                            Comment = sqlDataReader.GetString(4),
+                            Usefull = sqlDataReader.GetInt32(5),
+                            Title = sqlDataReader.GetString(6),
+                            UserID = sqlDataReader.GetInt32(7),
+                            AccomodationID = sqlDataReader.GetInt32(8)
+                        };
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+            return Ok(review);
+        }
+
+        // ===================================================================================================
+        [HttpGet]
+        [Route("~/api/accomodation/{accomodationId:int}/reviews")]
+        public IHttpActionResult GetAccomodationReviews(int accomodationId)
+        {
+            Review review = null;
+
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand selectReviewById = new SqlCommand(@"SELECT * FROM Review
+                                                                    WHERE Acc_ID = @Acc_ID", sqlConnection);
+                    selectReviewById.Parameters.AddWithValue("Acc_ID", accomodationId);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = selectReviewById.ExecuteReader();
+                    while (sqlDataReader.Read())
+                    {
+                        review = new Review
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Date = sqlDataReader.GetDateTime(1),
+                            Rate = sqlDataReader.GetInt32(2),
+                            Recommendation = sqlDataReader.GetBoolean(3),
+                            Comment = sqlDataReader.GetString(4),
+                            Usefull = sqlDataReader.GetInt32(5),
+                            Title = sqlDataReader.GetString(6),
+                            UserID = sqlDataReader.GetInt32(7),
+                            AccomodationID = sqlDataReader.GetInt32(8)
+                        };
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+            return Ok(review);
+        }
+
         // ===================================================================================================
         [HttpPost]
         public HttpResponseMessage CreateNewReview(Review review)
