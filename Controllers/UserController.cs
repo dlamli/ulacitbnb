@@ -10,7 +10,6 @@ using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
 {
-    //Authentication Access
     [Authorize]
     [RoutePrefix("api/user")]
     public class UserController : ApiController
@@ -107,6 +106,67 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
             return Ok(users);
+        }
+        //------------------------------------------------------------------------------
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("auth")]
+        public IHttpActionResult Authenticate(LoginRequest loginRequest)
+        {
+            if (loginRequest == null) return BadRequest("Complete the fields to login an user.");
+            User user = new User();
+            try
+            {
+                using (sqlConnection)
+                {
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Use_ID
+                                                                 ,Use_Name
+                                                                 ,Use_LastName
+                                                                 ,Use_Identification
+                                                                 ,Use_Password
+                                                                 ,Use_Email
+                                                                 ,Use_Status
+                                                                 ,Use_BirthDate
+                                                                 ,Use_Phone
+                                                             FROM [User]
+                                                             WHERE 
+                                                                Use_Name = @Use_Name 
+                                                                AND Use_Password = @Use_Password", sqlConnection);
+
+                    sqlCommand.Parameters.AddWithValue("@Use_Name", loginRequest.Username);
+                    sqlCommand.Parameters.AddWithValue("@Use_Password", loginRequest.Password);
+
+                    sqlConnection.Open();
+
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                    if (sqlDataReader.Read())
+                    {
+                        user.Use_ID = sqlDataReader.GetInt32(0);
+                        user.Use_Name = sqlDataReader.GetString(1);
+                        user.Use_LastName = sqlDataReader.GetString(2);
+                        user.Use_Identification = sqlDataReader.GetString(3);
+                        user.Use_Password = sqlDataReader.GetString(4);
+                        user.Use_Email = sqlDataReader.GetString(5);
+                        user.Use_Status = sqlDataReader.GetString(6);
+                        user.Use_BirthDate = sqlDataReader.GetDateTime(7);
+                        user.Use_Phone = sqlDataReader.GetString(8);
+
+                        var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
+                        user.Token = token;
+                    }
+                    sqlConnection.Close();
+
+                    if (!string.IsNullOrEmpty(user.Token))
+                        return Ok(user);
+                    else return Unauthorized();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
         }
         //------------------------------------------------------------------------------
         [HttpPost]
