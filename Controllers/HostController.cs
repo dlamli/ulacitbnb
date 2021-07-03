@@ -16,9 +16,13 @@ namespace ulacit_bnb.Controllers
         readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
 
         // ===================================================================================================
-        [HttpGet]
-        public IHttpActionResult GetHost(int id)
+        [HttpGet, Route("{hostId:int}")]
+        public IHttpActionResult GetHost(int hostId)
         {
+            if (hostId < 1) 
+            {
+                return BadRequest("Invalid Host ID");
+            }
             Host host = null;
             
             try
@@ -26,9 +30,16 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectHostById = new SqlCommand(@"SELECT * FROM Host
-                                                                    WHERE Hos_ID = @Hos_ID", sqlConnection);
-                    selectHostById.Parameters.AddWithValue("Hos_ID", id);
+                    SqlCommand selectHostById = new SqlCommand(@"SELECT 
+                                                                    Hos_ID,
+                                                                    Hos_Name,
+                                                                    Hos_LastName,
+                                                                    Hos_Password,
+                                                                    Hos_Description,
+                                                                    Hos_Status 
+                                                                FROM Host
+                                                                WHERE Hos_ID = @Hos_ID", sqlConnection);
+                    selectHostById.Parameters.AddWithValue("Hos_ID", hostId);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectHostById.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -64,7 +75,14 @@ namespace ulacit_bnb.Controllers
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand selectAllHosts = new SqlCommand("SELECT * FROM Host", sqlConnection);
+                    SqlCommand selectAllHosts = new SqlCommand(@"SELECT
+                                                                    Hos_ID,
+                                                                    Hos_Name,
+                                                                    Hos_LastName,
+                                                                    Hos_Password,
+                                                                    Hos_Description,
+                                                                    Hos_Status
+                                                                FROM Host", sqlConnection);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectAllHosts.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -93,13 +111,18 @@ namespace ulacit_bnb.Controllers
         [HttpPost]
         public HttpResponseMessage CreateNewHost(Host host)
         {
+            if (host == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Required fields to create host are invalid");
+            }
+
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand insertNewHost = new SqlCommand(@"INSERT INTO Host 
-                                                                (Hos_Name, Hos_LastName, Hos_Password, Hos_Description, Hos_Status)
+                                                                    (Hos_Name, Hos_LastName, Hos_Password, Hos_Description, Hos_Status)
                                                                 VALUES (@Hos_Name, @Hos_LastName, @Hos_Password, @Hos_Description, @Hos_Status)", sqlConnection);
                     insertNewHost.Parameters.AddWithValue("Hos_Name", host.Name);
                     insertNewHost.Parameters.AddWithValue("Hos_LastName", host.LastName);
@@ -112,9 +135,9 @@ namespace ulacit_bnb.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(ex.ToString());
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED: {host.Name}");
+            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED SUCCESFULLY: {host.Name} {host.LastName}");
         }
 
         // ===================================================================================================
@@ -123,62 +146,62 @@ namespace ulacit_bnb.Controllers
         {
             if (host == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "Host not found");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Required fields to update host are invalid");
             }
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand insertNewHost = new SqlCommand(@"UPDATE Host 
-                                                                SET Hos_Name = @Hos_Name,
-                                                                Hos_LastName = @Hos_LastName,
-                                                                Hos_Password = Hos_Password,
-                                                                Hos_Description = @Hos_Description,
-                                                                Hos_Status = @Hos_Status
-                                                                WHERE Hos_ID = @Hos_ID", sqlConnection);
-                    insertNewHost.Parameters.AddWithValue("Hos_ID", host.ID);
-                    insertNewHost.Parameters.AddWithValue("Hos_Name", host.Name);
-                    insertNewHost.Parameters.AddWithValue("Hos_LastName", host.LastName);
-                    insertNewHost.Parameters.AddWithValue("Hos_Password", host.Password);
-                    insertNewHost.Parameters.AddWithValue("Hos_Description", host.Description);
-                    insertNewHost.Parameters.AddWithValue("Hos_Status", host.Status);
+                    SqlCommand updateHost = new SqlCommand(@"UPDATE Host 
+                                                             SET Hos_Name = @Hos_Name,
+                                                                 Hos_LastName = @Hos_LastName,
+                                                                 Hos_Password = Hos_Password,
+                                                                 Hos_Description = @Hos_Description,
+                                                                 Hos_Status = @Hos_Status
+                                                            WHERE Hos_ID = @Hos_ID", sqlConnection);
+                    updateHost.Parameters.AddWithValue("Hos_ID", host.ID);
+                    updateHost.Parameters.AddWithValue("Hos_Name", host.Name);
+                    updateHost.Parameters.AddWithValue("Hos_LastName", host.LastName);
+                    updateHost.Parameters.AddWithValue("Hos_Password", host.Password);
+                    updateHost.Parameters.AddWithValue("Hos_Description", host.Description);
+                    updateHost.Parameters.AddWithValue("Hos_Status", host.Status);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
+                    SqlDataReader sqlDataReader = updateHost.ExecuteReader();
                 }
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Name} UPDATED");
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Name} UPDATED SUCCESFULLY");
         }
 
         // ===================================================================================================
-        [HttpDelete]
-        public HttpResponseMessage RemoveHost(int id)
+        [HttpDelete, Route("{hostId:int}")]
+        public HttpResponseMessage RemoveHost(int hostId)
         {
-            if (id < 1)
+            if (hostId < 1)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid Host ID");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid host ID");
             }
             try
             {
                 SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
-                    SqlCommand insertNewHost = new SqlCommand(@"DELETE FROM Host
+                    SqlCommand deleteHost = new SqlCommand(@"DELETE FROM Host
                                                                 WHERE Hos_ID = @Hos_ID", sqlConnection);
-                    insertNewHost.Parameters.AddWithValue("Hos_ID", id);
+                    deleteHost.Parameters.AddWithValue("Hos_ID", hostId);
                     sqlConnection.Open();
-                    SqlDataReader sqlDataReader = insertNewHost.ExecuteReader();
+                    SqlDataReader sqlDataReader = deleteHost.ExecuteReader();
                 }
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETED");
+            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETED WITH ANY PROBLEM");
         }
 
     }
