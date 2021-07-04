@@ -9,8 +9,7 @@ using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/host")]
+    [AllowAnonymous, RoutePrefix("api/host")]
     public class HostController : ApiController
     {
         readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
@@ -138,7 +137,7 @@ namespace ulacit_bnb.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED SUCCESFULLY: {host.Name} {host.LastName}");
         }
         // ===================================================================================================
-        [AllowAnonymous, HttpPost, Route("auth")]
+        [HttpPost, Route("auth")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
             if (loginRequest == null) return BadRequest("Complete the fields to login an host.");

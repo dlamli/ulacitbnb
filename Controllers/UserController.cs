@@ -10,8 +10,7 @@ using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/user")]
+    [AllowAnonymous, RoutePrefix("api/user")]
     public class UserController : ApiController
     {
         //SQL Connection
@@ -108,7 +107,7 @@ namespace ulacit_bnb.Controllers
             return Ok(users);
         }
         //------------------------------------------------------------------------------
-        [AllowAnonymous, HttpPost, Route("auth")]
+        [HttpPost, Route("auth")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
             if (loginRequest == null) return BadRequest("Complete the fields to login an user.");
