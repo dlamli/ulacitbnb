@@ -177,8 +177,6 @@ namespace ulacit_bnb.Controllers
                         var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
                         host.Token = token;
                     }
-                    sqlConnection.Close();
-
                     if (!string.IsNullOrEmpty(host.Token))
                         return Ok(host);
                     else return Unauthorized();
