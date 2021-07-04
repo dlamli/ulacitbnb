@@ -63,7 +63,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(host);
         }
-
         // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetAllHosts()
@@ -106,7 +105,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(hosts);
         }
-
         // ===================================================================================================
         [HttpPost]
         public HttpResponseMessage CreateNewHost(Host host)
@@ -140,9 +138,7 @@ namespace ulacit_bnb.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED SUCCESFULLY: {host.Name} {host.LastName}");
         }
         // ===================================================================================================
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("auth")]
+        [AllowAnonymous, HttpPost, Route("auth")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
             if (loginRequest == null) return BadRequest("Complete the fields to login an host.");
@@ -195,8 +191,6 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
         }
-        //------------------------------------------------------------------------------
-
         // ===================================================================================================
         [HttpPut]
         public HttpResponseMessage UpdateHost(Host host)
@@ -233,7 +227,6 @@ namespace ulacit_bnb.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Name} UPDATED SUCCESFULLY");
         }
-
         // ===================================================================================================
         [HttpDelete, Route("{hostId:int}")]
         public HttpResponseMessage RemoveHost(int hostId)

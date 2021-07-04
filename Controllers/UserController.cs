@@ -108,9 +108,7 @@ namespace ulacit_bnb.Controllers
             return Ok(users);
         }
         //------------------------------------------------------------------------------
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("auth")]
+        [AllowAnonymous, HttpPost, Route("auth")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
             if (loginRequest == null) return BadRequest("Complete the fields to login an user.");
@@ -155,8 +153,6 @@ namespace ulacit_bnb.Controllers
                         var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
                         user.Token = token;
                     }
-                    sqlConnection.Close();
-
                     if (!string.IsNullOrEmpty(user.Token))
                         return Ok(user);
                     else return Unauthorized();
@@ -164,7 +160,6 @@ namespace ulacit_bnb.Controllers
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
         }
