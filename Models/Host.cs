@@ -8,5 +8,6 @@ namespace ulacit_bnb.Models
         public string Password { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
+        public string Token { get; set; }
     }
 }

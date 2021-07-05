@@ -9,8 +9,7 @@ using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/host")]
+    [AllowAnonymous, RoutePrefix("api/host")]
     public class HostController : ApiController
     {
         readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
@@ -63,7 +62,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(host);
         }
-
         // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetAllHosts()
@@ -106,7 +104,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(hosts);
         }
-
         // ===================================================================================================
         [HttpPost]
         public HttpResponseMessage CreateNewHost(Host host)
@@ -139,7 +136,58 @@ namespace ulacit_bnb.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED SUCCESFULLY: {host.Name} {host.LastName}");
         }
+        // ===================================================================================================
+        [HttpPost, Route("auth")]
+        public IHttpActionResult Authenticate(LoginRequest loginRequest)
+        {
+            if (loginRequest == null) return BadRequest("Complete the fields to login an host.");
+            Host host = new Host();
+            try
+            {
+                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
+                using (sqlConnection)
+                {
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT 
+                                                                    Hos_ID,
+                                                                    Hos_Name,
+                                                                    Hos_LastName,
+                                                                    Hos_Password,
+                                                                    Hos_Description,
+                                                                    Hos_Status 
+                                                                FROM Host
+                                                                WHERE Hos_Name = @Hos_Name 
+                                                                AND Hos_Password = @Hos_Password", sqlConnection);
 
+                    sqlCommand.Parameters.AddWithValue("@Hos_Name", loginRequest.Username);
+                    sqlCommand.Parameters.AddWithValue("@Hos_Password", loginRequest.Password);
+
+                    sqlConnection.Open();
+
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                    if (sqlDataReader.Read())
+                    {
+                        host.ID = sqlDataReader.GetInt32(0);
+                        host.Name = sqlDataReader.GetString(1);
+                        host.LastName = sqlDataReader.GetString(2);
+                        host.Password = sqlDataReader.GetString(3);
+                        host.Description = sqlDataReader.GetString(4);
+                        host.Status = sqlDataReader.GetString(5);
+
+                        var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
+                        host.Token = token;
+                    }
+                    if (!string.IsNullOrEmpty(host.Token))
+                        return Ok(host);
+                    else return Unauthorized();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return InternalServerError(ex);
+            }
+        }
         // ===================================================================================================
         [HttpPut]
         public HttpResponseMessage UpdateHost(Host host)
@@ -176,7 +224,6 @@ namespace ulacit_bnb.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"HOST {host.Name} UPDATED SUCCESFULLY");
         }
-
         // ===================================================================================================
         [HttpDelete, Route("{hostId:int}")]
         public HttpResponseMessage RemoveHost(int hostId)
