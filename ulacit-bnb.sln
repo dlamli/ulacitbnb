@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulacit-bnb", "ulacit-bnb.csproj", "{FCBE1261-1622-4643-92CA-AB012C93F4DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulacit-bnb", "ulacitbnb\ulacit-bnb.csproj", "{FCBE1261-1622-4643-92CA-AB012C93F4DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
