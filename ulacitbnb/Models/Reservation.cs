@@ -22,11 +22,11 @@ namespace ulacit_bnb.Models
         public decimal Res_Quantity { get; set; }
         public string Res_ResolutionDate { get; set; }
         public int Res_PaymentID { get; set; }
-        public int Use_ID { get; set; }
+        public int Cus_ID { get; set; }
         public int Roo_ID { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual Payment Payment { get; set; }
         public virtual Room Room { get; set; }
-        public virtual User User { get; set; }
     }
 }

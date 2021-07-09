@@ -39,7 +39,7 @@ namespace ulacit_bnb.Controllers
                                                                         Rev_Comment,
                                                                         Rev_Usefull,
                                                                         Rev_Title,
-                                                                        Use_ID,
+                                                                        Cus_ID,
                                                                         Acc_ID 
                                                                     FROM Review
                                                                     WHERE Rev_ID = @Rev_ID", sqlConnection);
@@ -57,7 +57,7 @@ namespace ulacit_bnb.Controllers
                             Comment = sqlDataReader.GetString(4),
                             Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
-                            UserID = sqlDataReader.GetInt32(7),
+                            CustomerID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
                         };
                     }
@@ -90,7 +90,7 @@ namespace ulacit_bnb.Controllers
                                                                         Rev_Comment,
                                                                         Rev_Usefull,
                                                                         Rev_Title,
-                                                                        Use_ID,
+                                                                        Cus_ID,
                                                                         Acc_ID
                                                                   FROM Review", sqlConnection);
                     sqlConnection.Open();
@@ -106,7 +106,7 @@ namespace ulacit_bnb.Controllers
                             Comment = sqlDataReader.GetString(4),
                             Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
-                            UserID = sqlDataReader.GetInt32(7),
+                            CustomerID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
                         };
                         reviews.Add(review);
@@ -123,8 +123,8 @@ namespace ulacit_bnb.Controllers
 
 
         // ===================================================================================================
-        [HttpGet, Route("~/api/user/{userId:int}/reviews")]
-        public IHttpActionResult GetUserReviews(int userId)
+        [HttpGet, Route("~/api/user/{customerId:int}/reviews")]
+        public IHttpActionResult GetUserReviews(int customerId)
         {
             Review review = null;
 
@@ -141,11 +141,11 @@ namespace ulacit_bnb.Controllers
                                                                         Rev_Comment,
                                                                         Rev_Usefull,
                                                                         Rev_Title,
-                                                                        Use_ID,
+                                                                        Cus_ID,
                                                                         Acc_ID
                                                                     FROM Review
-                                                                    WHERE Use_ID = @Use_ID", sqlConnection);
-                    selectUserReviews.Parameters.AddWithValue("Use_ID", userId);
+                                                                    WHERE Cus_ID = @Cus_ID", sqlConnection);
+                    selectUserReviews.Parameters.AddWithValue("Cus_ID", customerId);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = selectUserReviews.ExecuteReader();
                     while (sqlDataReader.Read())
@@ -159,7 +159,7 @@ namespace ulacit_bnb.Controllers
                             Comment = sqlDataReader.GetString(4),
                             Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
-                            UserID = sqlDataReader.GetInt32(7),
+                            CustomerID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
                         };
                     }
@@ -192,7 +192,7 @@ namespace ulacit_bnb.Controllers
                                                                                 Rev_Comment,
                                                                                 Rev_Usefull,
                                                                                 Rev_Title,
-                                                                                Use_ID,
+                                                                                Cus_ID,
                                                                                 Acc_ID
                                                                             FROM Review
                                                                             WHERE Acc_ID = @Acc_ID", sqlConnection);
@@ -210,7 +210,7 @@ namespace ulacit_bnb.Controllers
                             Comment = sqlDataReader.GetString(4),
                             Usefull = sqlDataReader.GetInt32(5),
                             Title = sqlDataReader.GetString(6),
-                            UserID = sqlDataReader.GetInt32(7),
+                            CustomerID = sqlDataReader.GetInt32(7),
                             AccomodationID = sqlDataReader.GetInt32(8)
                         };
                     }
@@ -239,15 +239,15 @@ namespace ulacit_bnb.Controllers
                 using (sqlConnection)
                 {
                     SqlCommand insertNewReview = new SqlCommand(@"INSERT INTO Review 
-                                                                    (Rev_Date, Rev_Rate, Rev_Recommendation, Rev_Comment, Rev_Usefull, Rev_Title, Use_ID, Acc_ID)
-                                                                VALUES (@Rev_Date, @Rev_Rate, @Rev_Recommendation, @Rev_Comment, @Rev_Usefull, @Rev_Title, @Use_ID, @Acc_ID)", sqlConnection);
+                                                                    (Rev_Date, Rev_Rate, Rev_Recommendation, Rev_Comment, Rev_Usefull, Rev_Title, Cus_ID, Acc_ID)
+                                                                VALUES (@Rev_Date, @Rev_Rate, @Rev_Recommendation, @Rev_Comment, @Rev_Usefull, @Rev_Title, @Cus_ID, @Acc_ID)", sqlConnection);
                     insertNewReview.Parameters.AddWithValue("Rev_Date", review.Date);
                     insertNewReview.Parameters.AddWithValue("Rev_Rate", review.Rate);
                     insertNewReview.Parameters.AddWithValue("Rev_Recommendation", review.Recommendation);
                     insertNewReview.Parameters.AddWithValue("Rev_Comment", review.Comment);
                     insertNewReview.Parameters.AddWithValue("Rev_Usefull", review.Usefull);
                     insertNewReview.Parameters.AddWithValue("Rev_Title", review.Title);
-                    insertNewReview.Parameters.AddWithValue("Use_ID", review.UserID);
+                    insertNewReview.Parameters.AddWithValue("Cus_ID", review.CustomerID);
                     insertNewReview.Parameters.AddWithValue("Acc_ID", review.AccomodationID);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = insertNewReview.ExecuteReader();
@@ -282,7 +282,7 @@ namespace ulacit_bnb.Controllers
                                                                     Rev_Comment = @Rev_Comment,
                                                                     Rev_Usefull = @Rev_Usefull,
                                                                     Rev_Title = @Rev_Title,
-                                                                    Use_ID = @Use_ID,
+                                                                    Cus_ID = @Cus_ID,
                                                                     Acc_ID = @Acc_ID
                                                                 WHERE Rev_ID = @Rev_ID", sqlConnection);
                     updateReview.Parameters.AddWithValue("Rev_ID", review.ID);
@@ -292,7 +292,7 @@ namespace ulacit_bnb.Controllers
                     updateReview.Parameters.AddWithValue("Rev_Comment", review.Comment);
                     updateReview.Parameters.AddWithValue("Rev_Usefull", review.Usefull);
                     updateReview.Parameters.AddWithValue("Rev_Title", review.Title);
-                    updateReview.Parameters.AddWithValue("Use_ID", review.UserID);
+                    updateReview.Parameters.AddWithValue("Cus_ID", review.CustomerID);
                     updateReview.Parameters.AddWithValue("Acc_ID", review.AccomodationID);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = updateReview.ExecuteReader();
