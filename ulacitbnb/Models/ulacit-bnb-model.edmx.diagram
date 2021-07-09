@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f93840fdf70f48fda491591bb0a7e78f" Name="Diagram1">
         <EntityTypeShape EntityType="UlacitBnBModel.Accomodation" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="UlacitBnBModel.Customer" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="UlacitBnBModel.Host" Width="1.5" PointX="0.75" PointY="5.125" />
         <EntityTypeShape EntityType="UlacitBnBModel.Payment" Width="1.5" PointX="8.25" PointY="1" />
         <EntityTypeShape EntityType="UlacitBnBModel.Reservation" Width="1.5" PointX="10.5" PointY="4.5" />
@@ -13,15 +14,14 @@
         <EntityTypeShape EntityType="UlacitBnBModel.Room" Width="1.5" PointX="8.25" PointY="4.75" />
         <EntityTypeShape EntityType="UlacitBnBModel.Service" Width="1.5" PointX="6" PointY="1.25" />
         <EntityTypeShape EntityType="UlacitBnBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.125" />
-        <EntityTypeShape EntityType="UlacitBnBModel.User" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="UlacitBnBModel.database_firewall_rules" Width="1.5" PointX="2.75" PointY="9.125" />
         <AssociationConnector Association="UlacitBnBModel.FK_Accomodation_Host" />
         <AssociationConnector Association="UlacitBnBModel.FK_Review_Accomodation" />
         <AssociationConnector Association="UlacitBnBModel.FK_Room_Accomodation" />
-        <AssociationConnector Association="UlacitBnBModel.FK_Reservation_Payment" />
-        <AssociationConnector Association="UlacitBnBModel.FK_Reservation_Room1" />
         <AssociationConnector Association="UlacitBnBModel.FK_Reservation_User" />
         <AssociationConnector Association="UlacitBnBModel.FK_Review_User" />
+        <AssociationConnector Association="UlacitBnBModel.FK_Reservation_Payment" />
+        <AssociationConnector Association="UlacitBnBModel.FK_Reservation_Room1" />
         <AssociationConnector Association="UlacitBnBModel.FK_Room_Service" />
       </Diagram>
     </edmx:Diagrams>

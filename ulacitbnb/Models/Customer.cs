@@ -12,25 +12,24 @@ namespace ulacit_bnb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Customer()
         {
             this.Reservation = new HashSet<Reservation>();
             this.Review = new HashSet<Review>();
         }
     
-        public int Use_ID { get; set; }
-        public string Use_Name { get; set; }
-        public string Use_LastName { get; set; }
-        public string Use_Identification { get; set; }
-        public string Use_Password { get; set; }
-        public string Use_Email { get; set; }
-        public string Use_Status { get; set; }
-        public System.DateTime Use_BirthDate { get; set; }
-        public string Use_Phone { get; set; }
-
+        public int Cus_ID { get; set; }
+        public string Cus_Name { get; set; }
+        public string Cus_LastName { get; set; }
+        public string Cus_Identification { get; set; }
+        public string Cus_Password { get; set; }
+        public string Cus_Email { get; set; }
+        public string Cus_Status { get; set; }
+        public System.DateTime Cus_BirthDate { get; set; }
+        public string Cus_Phone { get; set; }
         public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

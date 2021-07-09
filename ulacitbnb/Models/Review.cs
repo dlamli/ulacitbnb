@@ -9,7 +9,7 @@ namespace ulacit_bnb.Models
         public string Comment { get; set; }
         public int Usefull { get; set; }
         public string Title { get; set; }
-        public int UserID { get; set; }
+        public int CustomerID { get; set; }
         public int AccomodationID { get; set; }
     }
 }

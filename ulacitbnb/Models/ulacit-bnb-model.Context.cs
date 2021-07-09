@@ -28,6 +28,7 @@ namespace ulacit_bnb.Models
         }
     
         public virtual DbSet<Accomodation> Accomodation { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Host> Host { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Reservation> Reservation { get; set; }
@@ -35,7 +36,6 @@ namespace ulacit_bnb.Models
         public virtual DbSet<Room> Room { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
