@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ulacit_bnb.db;
 using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
@@ -15,7 +16,8 @@ namespace ulacit_bnb.Controllers
     public class ServiceController : ApiController
     {
         //SQL Connection
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
+        SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
+        // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
@@ -52,7 +54,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(service);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetAll()
         {
@@ -89,7 +91,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(services);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpPost]
         public IHttpActionResult EnterService(Service service)
         {
@@ -128,7 +130,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(service);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpPut]
         public IHttpActionResult UpdateService(Service service)
         {
@@ -172,7 +174,7 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpDelete]
         public IHttpActionResult DeleteService(int id)
         {
@@ -201,7 +203,5 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(id);
         }
-        //------------------------------------------------------------------------------
-
     }
 }
