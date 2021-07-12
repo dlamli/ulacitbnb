@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ulacit_bnb.db;
 using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
@@ -15,7 +16,8 @@ namespace ulacit_bnb.Controllers
     public class RoomController : ApiController
     {
         //SQL Connection
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
+        SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
+
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {

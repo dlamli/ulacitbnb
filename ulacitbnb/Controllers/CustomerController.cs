@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ulacit_bnb.db;
 using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
@@ -14,7 +15,8 @@ namespace ulacit_bnb.Controllers
     public class CustomerController : ApiController
     {
         //SQL Connection
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString);
+        SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
+        // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
@@ -61,7 +63,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(customer);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetAll()
         {
@@ -106,7 +108,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(customers);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpPost, Route("auth")]
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
@@ -162,7 +164,7 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpPost]
         public IHttpActionResult EnterCustomer(Customer customer)
         {
@@ -213,7 +215,7 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(customer);
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpPut]
         public IHttpActionResult UpdateCustomer(Customer customer)
         {
@@ -265,7 +267,7 @@ namespace ulacit_bnb.Controllers
                 return InternalServerError(ex);
             }
         }
-        //------------------------------------------------------------------------------
+        // ===================================================================================================
         [HttpDelete]
         public IHttpActionResult DeleteCustomer(int id)
         {
@@ -294,6 +296,5 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(id);
         }
-        //------------------------------------------------------------------------------
     }
 }

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ulacit_bnb.db;
 using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
@@ -12,8 +13,7 @@ namespace ulacit_bnb.Controllers
     [AllowAnonymous, RoutePrefix("api/host")]
     public class HostController : ApiController
     {
-        readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
-
+        SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
         // ===================================================================================================
         [HttpGet, Route("{hostId:int}")]
         public IHttpActionResult GetHost(int hostId)
@@ -26,7 +26,6 @@ namespace ulacit_bnb.Controllers
             
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectHostById = new SqlCommand(@"SELECT 
@@ -70,7 +69,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectAllHosts = new SqlCommand(@"SELECT
@@ -115,7 +113,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand insertNewHost = new SqlCommand(@"INSERT INTO Host 
@@ -144,7 +141,6 @@ namespace ulacit_bnb.Controllers
             Host host = new Host();
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT 
@@ -198,7 +194,6 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand updateHost = new SqlCommand(@"UPDATE Host 
@@ -234,7 +229,6 @@ namespace ulacit_bnb.Controllers
             }
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand deleteHost = new SqlCommand(@"DELETE FROM Host

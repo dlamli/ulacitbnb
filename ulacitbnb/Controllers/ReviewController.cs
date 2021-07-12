@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ulacit_bnb.db;
 using ulacit_bnb.Models;
 
 namespace ulacit_bnb.Controllers
@@ -14,7 +15,7 @@ namespace ulacit_bnb.Controllers
     [RoutePrefix("api/review")]
     public class ReviewController : ApiController
     {
-        readonly string DB_CONNECTION_STRING = ConfigurationManager.ConnectionStrings["UlacitbnbAzureDB"].ConnectionString;
+        SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
 
         // ===================================================================================================
         [HttpGet, Route("{reviewId:int}")]
@@ -28,7 +29,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectReviewById = new SqlCommand(@"SELECT
@@ -70,7 +70,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(review);
         }
-
         // ===================================================================================================
         [HttpGet]
         public IHttpActionResult GetAllReviews()
@@ -79,7 +78,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectAllReviews = new SqlCommand(@"SELECT 
@@ -120,8 +118,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(reviews);
         }
-
-
         // ===================================================================================================
         [HttpGet, Route("~/api/user/{customerId:int}/reviews")]
         public IHttpActionResult GetUserReviews(int customerId)
@@ -130,7 +126,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectUserReviews = new SqlCommand(@"SELECT 
@@ -172,7 +167,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(review);
         }
-
         // ===================================================================================================
         [HttpGet, Route("~/api/accomodation/{accomodationId:int}/reviews")]
         public IHttpActionResult GetAccomodationReviews(int accomodationId)
@@ -181,7 +175,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand selectAccomodationReviews = new SqlCommand(@"SELECT
@@ -223,7 +216,6 @@ namespace ulacit_bnb.Controllers
             }
             return Ok(review);
         }
-
         // ===================================================================================================
         [HttpPost]
         public HttpResponseMessage CreateNewReview(Review review)
@@ -235,7 +227,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand insertNewReview = new SqlCommand(@"INSERT INTO Review 
@@ -259,8 +250,6 @@ namespace ulacit_bnb.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"NEW REVIEW CREATED SUCCESFULLY: {review.Title}");
         }
-
-
         // ===================================================================================================
         [HttpPut]
         public HttpResponseMessage UpdateReview(Review review)
@@ -272,7 +261,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand updateReview = new SqlCommand(@"UPDATE Review 
@@ -304,7 +292,6 @@ namespace ulacit_bnb.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, $"REVIEW {review.Title} UPDATED SUCCESFULLY");
         }
-
         // ===================================================================================================
         [HttpDelete, Route("{reviewId:int}")]
         public HttpResponseMessage RemoveReview(int reviewId)
@@ -316,7 +303,6 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                SqlConnection sqlConnection = new SqlConnection(DB_CONNECTION_STRING);
                 using (sqlConnection)
                 {
                     SqlCommand deleteReview = new SqlCommand(@"DELETE Review
