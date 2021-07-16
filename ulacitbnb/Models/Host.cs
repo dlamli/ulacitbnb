@@ -1,4 +1,4 @@
-namespace ulacit_bnb.Models
+namespace ulacitbnb.Models
 {
     public partial class Host
     {

@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ulacit_bnb.Models
+namespace ulacitbnb.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
-    public partial class ulacitbnb : DbContext
+    using ulacit_bnb.Models;
+
+    public partial class ULACITBNB : DbContext
     {
-        public ulacitbnb()
-            : base("name=ulacitbnb")
+        public ULACITBNB()
+            : base("name=ULACITBNB")
         {
         }
     

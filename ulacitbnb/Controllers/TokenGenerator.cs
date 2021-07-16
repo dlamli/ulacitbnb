@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     /// <summary>
     /// JWT Token generator class using "secret-key"

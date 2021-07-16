@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using ulacit_bnb;
+using ulacitbnb;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace ulacit_bnb
+namespace ulacitbnb
 {
     public class SwaggerConfig
     {
@@ -32,7 +32,7 @@ namespace ulacit_bnb
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "ulacit_bnb");
+                        c.SingleApiVersion("v1", "ulacitbnb");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //

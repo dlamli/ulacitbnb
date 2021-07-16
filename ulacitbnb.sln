@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulacit-bnb", "ulacitbnb\ulacit-bnb.csproj", "{FCBE1261-1622-4643-92CA-AB012C93F4DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulacitbnb", "ulacitbnb\ulacitbnb.csproj", "{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FCBE1261-1622-4643-92CA-AB012C93F4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCBE1261-1622-4643-92CA-AB012C93F4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCBE1261-1622-4643-92CA-AB012C93F4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCBE1261-1622-4643-92CA-AB012C93F4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AF2C4E06-B84C-4653-B0AA-7CD4E45F7E2C}
+		SolutionGuid = {28E94CDB-A6EC-4790-A72C-DEB264C864EC}
 	EndGlobalSection
 EndGlobal

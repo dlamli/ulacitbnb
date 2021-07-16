@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ulacit_bnb
+namespace ulacitbnb
 {
     public class BundleConfig
     {

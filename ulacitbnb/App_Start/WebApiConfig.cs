@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using ulacit_bnb.Controllers;
+using ulacitbnb.Controllers;
 
-namespace ulacit_bnb
+namespace ulacitbnb
 {
     public static class WebApiConfig
     {

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using ulacit_bnb.Areas.HelpPage.ModelDescriptions;
+using ulacitbnb.Areas.HelpPage.ModelDescriptions;
 
-namespace ulacit_bnb.Areas.HelpPage.Models
+namespace ulacitbnb.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace ulacit_bnb
+namespace ulacitbnb
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

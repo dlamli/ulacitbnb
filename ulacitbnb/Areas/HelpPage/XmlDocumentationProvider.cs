@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using ulacit_bnb.Areas.HelpPage.ModelDescriptions;
+using ulacitbnb.Areas.HelpPage.ModelDescriptions;
 
-namespace ulacit_bnb.Areas.HelpPage
+namespace ulacitbnb.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

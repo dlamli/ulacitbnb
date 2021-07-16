@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ulacit_bnb.db;
-using ulacit_bnb.Models;
+using ulacitbnb.db;
+using ulacitbnb.Models;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     [Authorize]
     [RoutePrefix("api/accomodation")]
@@ -24,7 +24,7 @@ namespace ulacit_bnb.Controllers
             Accomodation accomodation = new Accomodation();
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT  [Acc_ID]
                                                                       ,[Acc_Name]
@@ -64,12 +64,12 @@ namespace ulacit_bnb.Controllers
         }
         // ===================================================================================================
         [HttpGet]
-        public IHttpActionResult GetAll() 
+        public IHttpActionResult GetAll()
         {
             List<Accomodation> accomodations = new List<Accomodation>();
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT  [Acc_ID]
                                                                       ,[Acc_Name]
@@ -84,7 +84,7 @@ namespace ulacit_bnb.Controllers
 
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                    while (sqlDataReader.Read()) 
+                    while (sqlDataReader.Read())
                     {
                         Accomodation accomodation = new Accomodation();
                         accomodation.Acc_ID = sqlDataReader.GetInt32(0);
@@ -109,7 +109,7 @@ namespace ulacit_bnb.Controllers
         }
         // ===================================================================================================
         [HttpPost]
-        public IHttpActionResult Enter(Accomodation accomodation) 
+        public IHttpActionResult Enter(Accomodation accomodation)
         {
             if (accomodation == null)
             {
@@ -118,7 +118,7 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[Accomodation](
                                                                        Acc_Name
@@ -155,7 +155,7 @@ namespace ulacit_bnb.Controllers
         }
         // ===================================================================================================
         [HttpPut]
-        public IHttpActionResult Update(Accomodation accomodation) 
+        public IHttpActionResult Update(Accomodation accomodation)
         {
             if (accomodation == null)
             {
@@ -164,7 +164,7 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"UPDATE [dbo].[Accomodation]
                                                               SET Acc_Name = @Acc_Name
@@ -194,7 +194,7 @@ namespace ulacit_bnb.Controllers
                     {
                         return BadRequest($"Accomodation with ID {accomodation.Acc_ID} doesn't exist in the database.");
                     }
-                    else 
+                    else
                     {
                         return Ok(rowsAffected);
                     }

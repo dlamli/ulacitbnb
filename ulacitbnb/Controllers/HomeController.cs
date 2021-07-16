@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     public class HomeController : Controller
     {

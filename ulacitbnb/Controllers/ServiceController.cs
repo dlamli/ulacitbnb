@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ulacit_bnb.db;
-using ulacit_bnb.Models;
+using ulacitbnb.db;
+using ulacitbnb.Models;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     [Authorize]
     [RoutePrefix("api/service")]
@@ -159,13 +159,13 @@ namespace ulacit_bnb.Controllers
                     sqlConnection.Open();
                     int rowsAffected = sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
-                    if(rowsAffected <= 0)
+                    if (rowsAffected <= 0)
                     {
                         return BadRequest($"Service with ID {service.Ser_ID} doesn't exist in database.");
                     }
                     else
                     {
-                    return Ok(rowsAffected);
+                        return Ok(rowsAffected);
                     }
                 }
             }

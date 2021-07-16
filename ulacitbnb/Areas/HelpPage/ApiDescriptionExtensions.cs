@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace ulacit_bnb.Areas.HelpPage
+namespace ulacitbnb.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

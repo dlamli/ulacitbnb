@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace ulacit_bnb.Areas.HelpPage.ModelDescriptions
+namespace ulacitbnb.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

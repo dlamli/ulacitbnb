@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using ulacit_bnb.Areas.HelpPage.ModelDescriptions;
-using ulacit_bnb.Areas.HelpPage.Models;
+using ulacitbnb.Areas.HelpPage.ModelDescriptions;
+using ulacitbnb.Areas.HelpPage.Models;
 
-namespace ulacit_bnb.Areas.HelpPage.Controllers
+namespace ulacitbnb.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

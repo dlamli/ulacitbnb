@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ulacit_bnb.Models
+namespace ulacitbnb.Models
 {
     using System;
     

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ulacit_bnb")]
+[assembly: AssemblyTitle("ulacitbnb")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ulacit_bnb")]
+[assembly: AssemblyProduct("ulacitbnb")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2d43ede9-92f7-41ec-a143-2f3a379e0772")]
+[assembly: Guid("c759c1e9-5a75-444a-a35b-510e3a3e8303")]
 
 // Version information for an assembly consists of the following four values:
 //

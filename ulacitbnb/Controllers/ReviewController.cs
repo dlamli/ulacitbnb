@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ulacit_bnb.db;
 using ulacit_bnb.Models;
+using ulacitbnb.db;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     [Authorize]
     [RoutePrefix("api/review")]
@@ -296,7 +296,7 @@ namespace ulacit_bnb.Controllers
         [HttpDelete, Route("{reviewId:int}")]
         public HttpResponseMessage RemoveReview(int reviewId)
         {
-          if (reviewId < 1)
+            if (reviewId < 1)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid review ID");
             }

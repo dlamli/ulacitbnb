@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace ulacit_bnb.Areas.HelpPage
+namespace ulacitbnb.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

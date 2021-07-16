@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using ulacit_bnb.Areas.HelpPage.ModelDescriptions;
-using ulacit_bnb.Areas.HelpPage.Models;
+using ulacitbnb.Areas.HelpPage.ModelDescriptions;
+using ulacitbnb.Areas.HelpPage.Models;
 
-namespace ulacit_bnb.Areas.HelpPage
+namespace ulacitbnb.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

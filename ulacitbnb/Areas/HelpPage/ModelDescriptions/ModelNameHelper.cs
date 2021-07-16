@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace ulacit_bnb.Areas.HelpPage.ModelDescriptions
+namespace ulacitbnb.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

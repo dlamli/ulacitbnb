@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace ulacit_bnb.Areas.HelpPage.ModelDescriptions
+namespace ulacitbnb.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

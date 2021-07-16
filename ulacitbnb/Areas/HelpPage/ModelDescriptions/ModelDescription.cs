@@ -1,6 +1,6 @@
 using System;
 
-namespace ulacit_bnb.Areas.HelpPage.ModelDescriptions
+namespace ulacitbnb.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

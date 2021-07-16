@@ -5,10 +5,11 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ulacit_bnb.db;
-using ulacit_bnb.Models;
+using ulacitbnb.Controllers;
+using ulacitbnb.db;
+using ulacitbnb.Models;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     [AllowAnonymous, RoutePrefix("api/host")]
     public class HostController : ApiController
@@ -18,12 +19,12 @@ namespace ulacit_bnb.Controllers
         [HttpGet, Route("{hostId:int}")]
         public IHttpActionResult GetHost(int hostId)
         {
-            if (hostId < 1) 
+            if (hostId < 1)
             {
                 return BadRequest("Invalid Host ID");
             }
             Host host = null;
-            
+
             try
             {
                 using (sqlConnection)

@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     /// <summary>
     /// Token validator for Authorization Request using a DelegatingHandler

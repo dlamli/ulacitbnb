@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ulacit_bnb.Models
+namespace ulacitbnb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using ulacit_bnb.Models;
+
     public partial class Accomodation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

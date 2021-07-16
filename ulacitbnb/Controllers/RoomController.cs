@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ulacit_bnb.db;
-using ulacit_bnb.Models;
+using ulacitbnb.db;
+using ulacitbnb.Models;
 
-namespace ulacit_bnb.Controllers
+namespace ulacitbnb.Controllers
 {
     [Authorize]
     [RoutePrefix("api/room")]
@@ -24,7 +24,7 @@ namespace ulacit_bnb.Controllers
             Room room = new Room();
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Roo_ID]
                                                                   ,[Roo_Price]
@@ -160,7 +160,7 @@ namespace ulacit_bnb.Controllers
 
             try
             {
-                using (sqlConnection) 
+                using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"UPDATE [dbo].[Room]
                                                             SET Roo_Price = @Roo_Price
