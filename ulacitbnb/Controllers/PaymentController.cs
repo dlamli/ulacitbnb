@@ -137,8 +137,6 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Pay_Total", payment.Pay_Total);
 
                     sqlConnection.Open();
-                    int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
