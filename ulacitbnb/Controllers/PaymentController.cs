@@ -51,7 +51,6 @@ namespace ulacitbnb.Controllers
                         payment.Pay_Taxes = sqlDataReader.GetDecimal(6);
                         payment.Pay_Total = sqlDataReader.GetDecimal(7);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -94,7 +93,6 @@ namespace ulacitbnb.Controllers
                         payment.Pay_Total = sqlDataReader.GetDecimal(7);
                         payments.Add(payment);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -179,7 +177,6 @@ namespace ulacitbnb.Controllers
 
                     sqlConnection.Open();
                     int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                     if (rowsAffected <= 0)
                     {
                         return BadRequest($"Payment with ID {payment.Pay_ID} doesn't exist in the database.");
@@ -213,9 +210,6 @@ namespace ulacitbnb.Controllers
 
                     sqlCommand.Parameters.AddWithValue("@Pay_ID", id);
                     sqlConnection.Open();
-
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)

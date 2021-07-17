@@ -55,7 +55,6 @@ namespace ulacitbnb.Controllers
                         reservation.Cus_ID = sqlDataReader.GetInt32(8);
                         reservation.Roo_ID = sqlDataReader.GetInt32(9);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -102,7 +101,6 @@ namespace ulacitbnb.Controllers
                         reservation.Roo_ID = sqlDataReader.GetInt32(9);
                         reservations.Add(reservation);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -149,8 +147,6 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Roo_ID", reservation.Roo_ID);
 
                     sqlConnection.Open();
-                    int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -197,7 +193,6 @@ namespace ulacitbnb.Controllers
 
                     sqlConnection.Open();
                     int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                     if (rowsAffected <= 0)
                     {
                         return BadRequest($"Reservation with ID {reservation.Res_ID} doesn't exist in the database.");
@@ -231,9 +226,6 @@ namespace ulacitbnb.Controllers
 
                     sqlCommand.Parameters.AddWithValue("@Res_ID", id);
                     sqlConnection.Open();
-
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
