@@ -228,7 +228,7 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Res_ID", id);
                     sqlConnection.Open();
 
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)

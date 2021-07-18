@@ -135,7 +135,7 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Pay_Total", payment.Pay_Total);
 
                     sqlConnection.Open();
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -212,7 +212,7 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Pay_ID", id);
                     sqlConnection.Open();
 
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
