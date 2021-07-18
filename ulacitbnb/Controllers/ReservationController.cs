@@ -147,6 +147,7 @@ namespace ulacitbnb.Controllers
                     sqlCommand.Parameters.AddWithValue("@Roo_ID", reservation.Roo_ID);
 
                     sqlConnection.Open();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -226,6 +227,8 @@ namespace ulacitbnb.Controllers
 
                     sqlCommand.Parameters.AddWithValue("@Res_ID", id);
                     sqlConnection.Open();
+
+                    int rowsAfected = sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
