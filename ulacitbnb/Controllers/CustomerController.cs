@@ -18,12 +18,16 @@ namespace ulacitbnb.Controllers
         //SQL Connection
         SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
         // ===================================================================================================
-        [HttpGet]
-        public IHttpActionResult GetId(int id)
+        [HttpGet, Route("{customerId:int}")]
+        public IHttpActionResult GetId(int customerId)
         {
-            Customer customer = new Customer();
+            Customer customer = null;
             try
             {
+                if (customerId < 1)
+                {
+                    return BadRequest("Invalid Customer ID");
+                }
                 using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT [Cus_ID]
@@ -39,22 +43,24 @@ namespace ulacitbnb.Controllers
                                                             WHERE
                                                             	 Cus_ID = @Cus_ID", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Cus_ID", id);
+                    sqlCommand.Parameters.AddWithValue("Cus_ID", customerId);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
-                        customer.Cus_ID = sqlDataReader.GetInt32(0);
-                        customer.Cus_Name = sqlDataReader.GetString(1);
-                        customer.Cus_LastName = sqlDataReader.GetString(2);
-                        customer.Cus_Identification = sqlDataReader.GetString(3);
-                        customer.Cus_Password = sqlDataReader.GetString(4);
-                        customer.Cus_Email = sqlDataReader.GetString(5);
-                        customer.Cus_Status = sqlDataReader.GetString(6);
-                        customer.Cus_BirthDate = sqlDataReader.GetDateTime(7);
-                        customer.Cus_Phone = sqlDataReader.GetString(8);
+                        customer = new Customer
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            LastName = sqlDataReader.GetString(2),
+                            Identification = sqlDataReader.GetString(3),
+                            Password = sqlDataReader.GetString(4),
+                            Email = sqlDataReader.GetString(5),
+                            Status = sqlDataReader.GetString(6),
+                            BirthDate = sqlDataReader.GetDateTime(7),
+                            Phone = sqlDataReader.GetString(8)
+                        };
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -88,19 +94,20 @@ namespace ulacitbnb.Controllers
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
-                        Customer customer = new Customer();
-                        customer.Cus_ID = sqlDataReader.GetInt32(0);
-                        customer.Cus_Name = sqlDataReader.GetString(1);
-                        customer.Cus_LastName = sqlDataReader.GetString(2);
-                        customer.Cus_Identification = sqlDataReader.GetString(3);
-                        customer.Cus_Password = sqlDataReader.GetString(4);
-                        customer.Cus_Email = sqlDataReader.GetString(5);
-                        customer.Cus_Status = sqlDataReader.GetString(6);
-                        customer.Cus_BirthDate = sqlDataReader.GetDateTime(7);
-                        customer.Cus_Phone = sqlDataReader.GetString(8);
+                        Customer customer = new Customer
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            LastName = sqlDataReader.GetString(2),
+                            Identification = sqlDataReader.GetString(3),
+                            Password = sqlDataReader.GetString(4),
+                            Email = sqlDataReader.GetString(5),
+                            Status = sqlDataReader.GetString(6),
+                            BirthDate = sqlDataReader.GetDateTime(7),
+                            Phone = sqlDataReader.GetString(8)
+                        };
                         customers.Add(customer);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -114,7 +121,7 @@ namespace ulacitbnb.Controllers
         public IHttpActionResult Authenticate(LoginRequest loginRequest)
         {
             if (loginRequest == null) return BadRequest("Complete the fields to login an customer.");
-            Customer customer = new Customer();
+            Customer customer = null;
             try
             {
                 using (sqlConnection)
@@ -142,15 +149,17 @@ namespace ulacitbnb.Controllers
 
                     if (sqlDataReader.Read())
                     {
-                        customer.Cus_ID = sqlDataReader.GetInt32(0);
-                        customer.Cus_Name = sqlDataReader.GetString(1);
-                        customer.Cus_LastName = sqlDataReader.GetString(2);
-                        customer.Cus_Identification = sqlDataReader.GetString(3);
-                        customer.Cus_Password = sqlDataReader.GetString(4);
-                        customer.Cus_Email = sqlDataReader.GetString(5);
-                        customer.Cus_Status = sqlDataReader.GetString(6);
-                        customer.Cus_BirthDate = sqlDataReader.GetDateTime(7);
-                        customer.Cus_Phone = sqlDataReader.GetString(8);
+                        customer = new Customer { 
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            LastName = sqlDataReader.GetString(2),
+                            Identification = sqlDataReader.GetString(3),
+                            Password = sqlDataReader.GetString(4),
+                            Email = sqlDataReader.GetString(5),
+                            Status = sqlDataReader.GetString(6),
+                            BirthDate = sqlDataReader.GetDateTime(7),
+                            Phone = sqlDataReader.GetString(8)
+                        };
 
                         var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
                         customer.Token = token;
@@ -169,12 +178,10 @@ namespace ulacitbnb.Controllers
         [HttpPost]
         public IHttpActionResult EnterCustomer(Customer customer)
         {
-            if (customer == null)
-            {
-                return BadRequest("Please enter required fields to create an customer.");
-            }
             try
             {
+                if (customer == null) return BadRequest("Please enter required fields to create an customer.");
+                
                 using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[Customer](
@@ -195,19 +202,17 @@ namespace ulacitbnb.Controllers
                                                             	, @Cus_BirthDate
                                                                 , @Cus_Phone)", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Cus_Name", customer.Cus_Name);
-                    sqlCommand.Parameters.AddWithValue("Cus_LastName", customer.Cus_LastName);
-                    sqlCommand.Parameters.AddWithValue("Cus_Identification", customer.Cus_Identification);
-                    sqlCommand.Parameters.AddWithValue("Cus_Password", customer.Cus_Password);
-                    sqlCommand.Parameters.AddWithValue("Cus_Email", customer.Cus_Email);
-                    sqlCommand.Parameters.AddWithValue("Cus_Status", customer.Cus_Status);
-                    sqlCommand.Parameters.AddWithValue("Cus_BirthDate", customer.Cus_BirthDate);
-                    sqlCommand.Parameters.AddWithValue("Cus_Phone", customer.Cus_Phone);
-
+                    sqlCommand.Parameters.AddWithValue("Cus_Name", customer.Name);
+                    sqlCommand.Parameters.AddWithValue("Cus_LastName", customer.LastName);
+                    sqlCommand.Parameters.AddWithValue("Cus_Identification", customer.Identification);
+                    sqlCommand.Parameters.AddWithValue("Cus_Password", customer.Password);
+                    sqlCommand.Parameters.AddWithValue("Cus_Email", customer.Email);
+                    sqlCommand.Parameters.AddWithValue("Cus_Status", customer.Status);
+                    sqlCommand.Parameters.AddWithValue("Cus_BirthDate", customer.BirthDate);
+                    sqlCommand.Parameters.AddWithValue("Cus_Phone", customer.Phone);
 
                     sqlConnection.Open();
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -222,7 +227,7 @@ namespace ulacitbnb.Controllers
         {
             if (customer == null)
             {
-                return BadRequest("Customer not found in database.");
+                return BadRequest("Invalid Customer");
             }
             try
             {
@@ -239,23 +244,22 @@ namespace ulacitbnb.Controllers
                                                                 , Cus_Phone = @Cus_Phone
                                                             WHERE Cus_ID = @Cus_ID", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Cus_ID", customer.Cus_ID);
-                    sqlCommand.Parameters.AddWithValue("Cus_Name", customer.Cus_Name);
-                    sqlCommand.Parameters.AddWithValue("Cus_LastName", customer.Cus_LastName);
-                    sqlCommand.Parameters.AddWithValue("Cus_Identification", customer.Cus_Identification);
-                    sqlCommand.Parameters.AddWithValue("Cus_Password", customer.Cus_Password);
-                    sqlCommand.Parameters.AddWithValue("Cus_Email", customer.Cus_Email);
-                    sqlCommand.Parameters.AddWithValue("Cus_Status", customer.Cus_Status);
-                    sqlCommand.Parameters.AddWithValue("Cus_BirthDate", customer.Cus_BirthDate);
-                    sqlCommand.Parameters.AddWithValue("Cus_Phone", customer.Cus_Phone);
+                    sqlCommand.Parameters.AddWithValue("Cus_ID", customer.ID);
+                    sqlCommand.Parameters.AddWithValue("Cus_Name", customer.Name);
+                    sqlCommand.Parameters.AddWithValue("Cus_LastName", customer.LastName);
+                    sqlCommand.Parameters.AddWithValue("Cus_Identification", customer.Identification);
+                    sqlCommand.Parameters.AddWithValue("Cus_Password", customer.Password);
+                    sqlCommand.Parameters.AddWithValue("Cus_Email", customer.Email);
+                    sqlCommand.Parameters.AddWithValue("Cus_Status", customer.Status);
+                    sqlCommand.Parameters.AddWithValue("Cus_BirthDate", customer.BirthDate);
+                    sqlCommand.Parameters.AddWithValue("Cus_Phone", customer.Phone);
 
 
                     sqlConnection.Open();
                     int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
                     if (rowsAffected <= 0)
                     {
-                        return BadRequest($"Customer with ID {customer.Cus_ID} doesn't exist in database.");
+                        return BadRequest($"Customer with ID {customer.ID} doesn't exist in database.");
                     }
                     else
                     {
@@ -269,33 +273,30 @@ namespace ulacitbnb.Controllers
             }
         }
         // ===================================================================================================
-        [HttpDelete]
-        public IHttpActionResult DeleteCustomer(int id)
+        [HttpDelete,Route("{customerId:int}")]
+        public IHttpActionResult DeleteCustomer(int customerId)
         {
-            if (id <= 0)
-            {
-                return BadRequest($"Customer with ID:{id} not found in database.");
-            }
             try
             {
+                if (customerId <= 0)
+                {
+                    return BadRequest($"Customer with ID:{customerId} not found in database.");
+                }
                 using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"DELETE FROM [dbo].[Customer]
                                                             WHERE Cus_ID = @Cus_ID", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@Cus_ID", id);
+                    sqlCommand.Parameters.AddWithValue("@Cus_ID", customerId);
                     sqlConnection.Open();
-
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-            return Ok(id);
+            return Ok(customerId);
         }
     }
 }

@@ -15,27 +15,15 @@ namespace ulacitbnb.Models
 
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
-        {
-            this.Reservation = new HashSet<Reservation>();
-            this.Review = new HashSet<Review>();
-        }
-    
-        public int Cus_ID { get; set; }
-        public string Cus_Name { get; set; }
-        public string Cus_LastName { get; set; }
-        public string Cus_Identification { get; set; }
-        public string Cus_Password { get; set; }
-        public string Cus_Email { get; set; }
-        public string Cus_Status { get; set; }
-        public System.DateTime Cus_BirthDate { get; set; }
-        public string Cus_Phone { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Identification { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Status { get; set; }
+        public System.DateTime BirthDate { get; set; }
+        public string Phone { get; set; }
         public string Token { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Review> Review { get; set; }
     }
 }
