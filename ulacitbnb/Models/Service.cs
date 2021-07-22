@@ -9,24 +9,12 @@
 
 namespace ulacitbnb.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Service
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Service()
-        {
-            this.Room = new HashSet<Room>();
-        }
-    
-        public int Ser_ID { get; set; }
-        public string Ser_Name { get; set; }
-        public string Ser_Description { get; set; }
-        public string Ser_Type { get; set; }
-        public string Ser_Status { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Room { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -18,10 +18,10 @@ namespace ulacitbnb.Controllers
         //SQL Connection
         SqlConnection sqlConnection = ConnectionString.GetSqlConnection();
         // ===================================================================================================
-        [HttpGet]
-        public IHttpActionResult GetId(int id)
+        [HttpGet, Route("{serviceId:int}")]
+        public IHttpActionResult GetId(int serviceId)
         {
-            Service service = new Service();
+            Service service = null;
             try
             {
                 using (sqlConnection)
@@ -34,18 +34,20 @@ namespace ulacitbnb.Controllers
                                                              FROM [dbo].[Service]
                                                             WHERE
                                                             	 Ser_ID = @Ser_ID", sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("Ser_ID", id);
+                    sqlCommand.Parameters.AddWithValue("Ser_ID", serviceId);
                     sqlConnection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
-                        service.Ser_ID = sqlDataReader.GetInt32(0);
-                        service.Ser_Name = sqlDataReader.GetString(1);
-                        service.Ser_Description = sqlDataReader.GetString(2);
-                        service.Ser_Type = sqlDataReader.GetString(3);
-                        service.Ser_Status = sqlDataReader.GetString(4);
+                        service = new Service()
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            Description = sqlDataReader.GetString(2),
+                            Type = sqlDataReader.GetString(3),
+                            Status = sqlDataReader.GetString(4)
+                        };
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -74,15 +76,16 @@ namespace ulacitbnb.Controllers
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     while (sqlDataReader.Read())
                     {
-                        Service service = new Service();
-                        service.Ser_ID = sqlDataReader.GetInt32(0);
-                        service.Ser_Name = sqlDataReader.GetString(1);
-                        service.Ser_Description = sqlDataReader.GetString(2);
-                        service.Ser_Type = sqlDataReader.GetString(3);
-                        service.Ser_Status = sqlDataReader.GetString(4);
+                        Service service = new Service()
+                        {
+                            ID = sqlDataReader.GetInt32(0),
+                            Name = sqlDataReader.GetString(1),
+                            Description = sqlDataReader.GetString(2),
+                            Type = sqlDataReader.GetString(3),
+                            Status = sqlDataReader.GetString(4)
+                        };
                         services.Add(service);
                     }
-                    sqlConnection.Close();
                 }
             }
             catch (Exception ex)
@@ -113,15 +116,14 @@ namespace ulacitbnb.Controllers
                                                             	, @Ser_Type
                                                             	, @Ser_Status)", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Ser_Name", service.Ser_Name);
-                    sqlCommand.Parameters.AddWithValue("Ser_Description", service.Ser_Description);
-                    sqlCommand.Parameters.AddWithValue("Ser_Type", service.Ser_Type);
-                    sqlCommand.Parameters.AddWithValue("Ser_Status", service.Ser_Status);
+                    sqlCommand.Parameters.AddWithValue("Ser_Name", service.Name);
+                    sqlCommand.Parameters.AddWithValue("Ser_Description", service.Description);
+                    sqlCommand.Parameters.AddWithValue("Ser_Type", service.Type);
+                    sqlCommand.Parameters.AddWithValue("Ser_Status", service.Status);
 
 
                     sqlConnection.Open();
-                    int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -149,11 +151,11 @@ namespace ulacitbnb.Controllers
                                                             	, Ser_Status = @Ser_Status
                                                             WHERE Ser_ID = @Ser_ID", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("Ser_ID", service.Ser_ID);
-                    sqlCommand.Parameters.AddWithValue("Ser_Name", service.Ser_Name);
-                    sqlCommand.Parameters.AddWithValue("Ser_Description", service.Ser_Description);
-                    sqlCommand.Parameters.AddWithValue("Ser_Type", service.Ser_Type);
-                    sqlCommand.Parameters.AddWithValue("Ser_Status", service.Ser_Status);
+                    sqlCommand.Parameters.AddWithValue("Ser_ID", service.ID);
+                    sqlCommand.Parameters.AddWithValue("Ser_Name", service.Name);
+                    sqlCommand.Parameters.AddWithValue("Ser_Description", service.Description);
+                    sqlCommand.Parameters.AddWithValue("Ser_Type", service.Type);
+                    sqlCommand.Parameters.AddWithValue("Ser_Status", service.Status);
 
 
                     sqlConnection.Open();
@@ -161,7 +163,7 @@ namespace ulacitbnb.Controllers
                     sqlConnection.Close();
                     if (rowsAffected <= 0)
                     {
-                        return BadRequest($"Service with ID {service.Ser_ID} doesn't exist in database.");
+                        return BadRequest($"Service with ID {service.ID} doesn't exist in database.");
                     }
                     else
                     {
@@ -175,12 +177,12 @@ namespace ulacitbnb.Controllers
             }
         }
         // ===================================================================================================
-        [HttpDelete]
-        public IHttpActionResult DeleteService(int id)
+        [HttpDelete, Route("{serviceId:int}")]
+        public IHttpActionResult DeleteService(int serviceId)
         {
-            if (id <= 0)
+            if (serviceId <= 0)
             {
-                return BadRequest($"Service with ID:{id} not found in database.");
+                return BadRequest($"Service with ID:{serviceId} not found in database.");
             }
             try
             {
@@ -189,19 +191,17 @@ namespace ulacitbnb.Controllers
                     SqlCommand sqlCommand = new SqlCommand(@"DELETE FROM [dbo].[Service]
                                                             WHERE Ser_ID = @Ser_ID", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@Ser_ID", id);
+                    sqlCommand.Parameters.AddWithValue("@Ser_ID", serviceId);
                     sqlConnection.Open();
 
-                    int rowsAfected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-            return Ok(id);
+            return Ok(serviceId);
         }
     }
 }
