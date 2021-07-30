@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ulacitbnb", "ulacitbnb\ulacitbnb.csproj", "{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app-ulacitbnb", "AppReservasULACIT\app-ulacitbnb.csproj", "{11B9E4AE-A70D-42EC-82AD-7840E032694B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app-ulacitbnb", "app-ulactibnb\app-ulacitbnb.csproj", "{11B9E4AE-A70D-42EC-82AD-7840E032694B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7FAB37EC-A7B9-4751-993E-6711EC6A7C7B} = {7FAB37EC-A7B9-4751-993E-6711EC6A7C7B}
 	EndProjectSection
