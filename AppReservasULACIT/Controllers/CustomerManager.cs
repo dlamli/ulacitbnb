@@ -1,4 +1,4 @@
-﻿using AppReservasULACIT.Models;
+﻿using AppUlacitBnB.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace AppReservasULACIT.Controllers
+namespace AppUlacitBnB.Controllers
 {
     public class CustomerManager
     {

@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="frmRegistro.aspx.cs" Inherits="AppReservasULACIT.frmRegistro" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="frmRegistro.aspx.cs" Inherits="AppUlacitBnB.frmRegistro" %>
 
 <!DOCTYPE html>
 

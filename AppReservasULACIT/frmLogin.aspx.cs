@@ -1,5 +1,5 @@
-﻿using AppReservasULACIT.Controllers;
-using AppReservasULACIT.Models;
+﻿using AppUlacitBnB.Controllers;
+using AppUlacitBnB.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,7 +9,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AppReservasULACIT
+namespace AppUlacitBnB
 {
     public partial class frmLogin : System.Web.UI.Page
     {

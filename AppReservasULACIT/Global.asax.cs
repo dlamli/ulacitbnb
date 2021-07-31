@@ -8,7 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace AppReservasULACIT
+namespace AppUlacitBnB
 {
     public class Global : HttpApplication
     {

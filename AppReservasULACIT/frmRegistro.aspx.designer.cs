@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppReservasULACIT
+namespace AppUlacitBnB
 {
 
 

@@ -1,5 +1,5 @@
-﻿using AppReservasULACIT.Controllers;
-using AppReservasULACIT.Models;
+﻿using AppUlacitBnB.Controllers;
+using AppUlacitBnB.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AppReservasULACIT.Views
+namespace AppUlacitBnB.Views
 {
     public partial class frmHotel : System.Web.UI.Page
     {

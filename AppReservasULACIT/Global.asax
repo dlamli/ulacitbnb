@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="AppReservasULACIT.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="AppUlacitBnB.Global" Language="C#" %>

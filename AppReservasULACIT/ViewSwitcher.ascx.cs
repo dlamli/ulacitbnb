@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls.Resolvers;
 
-namespace AppReservasULACIT
+namespace AppUlacitBnB
 {
     public partial class ViewSwitcher : System.Web.UI.UserControl
     {

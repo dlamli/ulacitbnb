@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppReservasULACIT.Views
+namespace AppUlacitBnB.Views
 {
 
 

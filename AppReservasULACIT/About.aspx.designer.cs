@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace AppReservasULACIT
+namespace AppUlacitBnB
 {
     public partial class About
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppReservasULACIT {
+namespace AppUlacitBnB {
     
     
     public partial class Site_Mobile {
