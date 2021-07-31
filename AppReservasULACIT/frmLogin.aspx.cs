@@ -1,4 +1,5 @@
-﻿using AppUlacitBnB.Controllers;
+﻿using AppReservasULACIT.Models;
+using AppUlacitBnB.Controllers;
 using AppUlacitBnB.Models;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,11 @@ namespace AppUlacitBnB
                     LoginRequest loginRequest = new LoginRequest()
                     { Username = txtUsername.Text, Password = txtPassword.Text };
 
-                    Authentication auth = new Authentication();
+                    CustomerManager customerManager = new CustomerManager();
 
                     Customer customer = new Customer();
 
-                    customer = await auth.Validar(loginRequest);
+                    customer = await customerManager.Validate(loginRequest);
 
                     if (customer != null)
                     {
@@ -39,9 +40,9 @@ namespace AppUlacitBnB
                         var jwtHandler = new JwtSecurityTokenHandler();
                         jwtSecurityToken = jwtHandler.ReadJwtToken(customer.Token);
 
-                        Session["CodigoUsuario"] = customer.ID;
-                        Session["Identificacion"] = customer.Identification;
-                        Session["Nombre"] = customer.Name;
+                        Session["UserID"] = customer.ID;
+                        Session["Identification"] = customer.Identification;
+                        Session["Name"] = customer.Name;
                         Session["Token"] = customer.Token;
 
                         FormsAuthentication.RedirectFromLoginPage(customer.Identification, false);
@@ -49,7 +50,7 @@ namespace AppUlacitBnB
                     }
                     else
                     {
-                        lblError.Text = "Credenciales invalidas";
+                        lblError.Text = "Invalid Credentials";
                         lblError.Visible = true;
                     }
                 }

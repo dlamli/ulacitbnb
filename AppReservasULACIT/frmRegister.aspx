@@ -1,10 +1,10 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="frmRegistro.aspx.cs" Inherits="AppUlacitBnB.frmRegistro" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="frmRegister.aspx.cs" Inherits="AppUlacitBnB.frmRegistro" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>

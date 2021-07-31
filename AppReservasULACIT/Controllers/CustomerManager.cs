@@ -1,4 +1,5 @@
-﻿using AppUlacitBnB.Models;
+﻿using AppReservasULACIT.Models;
+using AppUlacitBnB.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,32 @@ namespace AppUlacitBnB.Controllers
     public class CustomerManager
     {
         string Url = "http://localhost:49220/api/customer/";
+        string UrlAuthenticate = "http://localhost:49220/api/customer/auth";
+        string UrlRegister = "http://localhost:49220/api/customer/";
 
-        //INICIALIZAR EL HTTPCLIENT (REQUEST)
+        public async Task<Customer> Validate(LoginRequest loginRequest)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var response = await httpClient.PostAsync(UrlAuthenticate,
+                new StringContent(JsonConvert.SerializeObject(loginRequest),
+                Encoding.UTF8, "application/json"));
+
+            return JsonConvert.DeserializeObject<Customer>(await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<Customer> Register(Customer user)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var response = await httpClient.PostAsync(UrlRegister,
+                new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8,
+                "application/json"));
+
+            return JsonConvert.DeserializeObject<Customer>(await response.Content.ReadAsStringAsync());
+        }
+
+
         HttpClient GetClient(string token)
         {
             HttpClient client = new HttpClient();
@@ -55,12 +80,20 @@ namespace AppUlacitBnB.Controllers
 
         public async Task<Customer> UpdateCustomer(Customer customer, string token)
         {
-            HttpClient httpClient = GetClient(token);
+            try
+            {
+                HttpClient httpClient = GetClient(token);
 
-            var response = await httpClient.PutAsync(Url,
-                new StringContent(JsonConvert.SerializeObject(customer), Encoding.UTF8, "application/json"));
+                var response = await httpClient.PutAsync(Url,
+                    new StringContent(JsonConvert.SerializeObject(customer), Encoding.UTF8, "application/json"));
 
-            return JsonConvert.DeserializeObject<Customer>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<Customer>(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         public async Task<string> DeleteCustomer(string codigo, string token)

@@ -1,5 +1,4 @@
 ﻿body {
-
 }
 
 body {
@@ -142,4 +141,8 @@ hr {
 .auto-style1 {
     width: 173px;
     height: 179px;
+}
+
+container.h1 {
+    text-align: center;
 }

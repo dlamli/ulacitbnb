@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - ASP.NET App</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -50,11 +50,18 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Managements
                 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Views/frmCustomer.aspx">Customer</a></li>
+                            <li><a href="#">Customer</a></li>
+                            <li><a href="#">Host</a></li>
+                            <li><a href="#">Service</a></li>
+                            <li><a href="#">Accomodation</a></li>
+                            <li><a href="#">Review</a></li>
+                            <li><a href="#">Room</a></li>
+                            <li><a href="#">Reservation</a></li>
+                            <li><a href="#">Payment</a></li>
                         </ul>
                     </li>
                     <li>
-                        <asp:LinkButton ID="lnkCerrarSesion" OnClick="lnkCerrarSesion_Click" runat="server">Sign Out</asp:LinkButton></li>
+                        <asp:LinkButton ID="lnkSignOut" OnClick="lnkSignOut_Click" runat="server">Sign Out</asp:LinkButton></li>
                 </ul>
             </div>
         </nav>

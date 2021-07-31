@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AppUlacitBnB.Models
+namespace AppReservasULACIT.Models
 {
     public class Customer
     {
@@ -17,6 +17,5 @@ namespace AppUlacitBnB.Models
         public System.DateTime BirthDate { get; set; }
         public string Phone { get; set; }
         public string Token { get; set; }
-
     }
 }

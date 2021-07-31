@@ -20,16 +20,16 @@ namespace AppUlacitBnB
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                if (Session["CodigoUsuario"] == null)
+                if (Session["UserID"] == null)
                 {
                     Response.Redirect("~/frmLogin.aspx");
                 }
             }
         }
 
-        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        protected void lnkSignOut_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Response.Redirect("~/frmLogin.aspx");
