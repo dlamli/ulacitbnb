@@ -10,7 +10,7 @@ using System.Web;
 
 namespace AppReservasULACIT.Controllers
 {
-    public class CustomerManager
+    public class Authentication
     {
         string UrlAuthenticate = "http://localhost:49220/api/customer/auth";
         string UrlRegister = "http://localhost:49220/api/customer/";

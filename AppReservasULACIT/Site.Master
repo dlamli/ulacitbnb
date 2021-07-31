@@ -50,9 +50,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Managements
                 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Views/frmHotel.aspx">Hoteles</a></li>
-                            <li><a href="/Views/frmHabitacion.aspx">Habitaciones</a></li>
-                            <li><a href="/Views/frmReserva.aspx">Reservas</a></li>
+                            <li><a href="/Views/frmCustomer.aspx">Customer</a></li>
                         </ul>
                     </li>
                     <li>
@@ -66,7 +64,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - ULACIT B&B</p>
             </footer>
         </div>
 

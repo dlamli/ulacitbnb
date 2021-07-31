@@ -27,11 +27,11 @@ namespace AppReservasULACIT
                     LoginRequest loginRequest = new LoginRequest()
                     { Username = txtUsername.Text, Password = txtPassword.Text };
 
-                    CustomerManager customerManager = new CustomerManager();
+                    Authentication auth = new Authentication();
 
                     Customer customer = new Customer();
 
-                    customer = await customerManager.Validar(loginRequest);
+                    customer = await auth.Validar(loginRequest);
 
                     if (customer != null)
                     {

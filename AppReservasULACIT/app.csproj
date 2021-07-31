@@ -198,9 +198,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Views\frmHabitacion.aspx" />
-    <Content Include="Views\frmHotel.aspx" />
-    <Content Include="Views\frmReserva.aspx" />
+    <Content Include="Views\frmCustomer.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -223,8 +221,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HotelManager.cs" />
     <Compile Include="Controllers\CustomerManager.cs" />
+    <Compile Include="Controllers\Authentication.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -273,25 +271,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmHabitacion.aspx.cs">
-      <DependentUpon>frmHabitacion.aspx</DependentUpon>
+    <Compile Include="Views\frmCustomer.aspx.cs">
+      <DependentUpon>frmCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\frmHabitacion.aspx.designer.cs">
-      <DependentUpon>frmHabitacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmHotel.aspx.cs">
-      <DependentUpon>frmHotel.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmHotel.aspx.designer.cs">
-      <DependentUpon>frmHotel.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmReserva.aspx.cs">
-      <DependentUpon>frmReserva.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\frmReserva.aspx.designer.cs">
-      <DependentUpon>frmReserva.aspx</DependentUpon>
+    <Compile Include="Views\frmCustomer.aspx.designer.cs">
+      <DependentUpon>frmCustomer.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
