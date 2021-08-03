@@ -149,7 +149,8 @@ namespace ulacitbnb.Controllers
 
                     if (sqlDataReader.Read())
                     {
-                        customer = new Customer { 
+                        customer = new Customer
+                        {
                             ID = sqlDataReader.GetInt32(0),
                             Name = sqlDataReader.GetString(1),
                             LastName = sqlDataReader.GetString(2),
@@ -181,7 +182,7 @@ namespace ulacitbnb.Controllers
             try
             {
                 if (customer == null) return BadRequest("Please enter required fields to create an customer.");
-                
+
                 using (sqlConnection)
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"INSERT INTO [dbo].[Customer](
@@ -273,7 +274,7 @@ namespace ulacitbnb.Controllers
             }
         }
         // ===================================================================================================
-        [HttpDelete,Route("{customerId:int}")]
+        [HttpDelete, Route("{customerId:int}")]
         public IHttpActionResult DeleteCustomer(int customerId)
         {
             try
