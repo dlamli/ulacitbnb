@@ -1,6 +1,5 @@
-﻿using AppReservasULACIT.Models;
+﻿using AppUlacitBnB.Models;
 using AppUlacitBnB.Controllers;
-using AppUlacitBnB.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
