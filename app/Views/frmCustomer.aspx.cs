@@ -144,7 +144,7 @@ namespace AppUlacitBnB.Views
 
                         Customer customerResponse = await customerManager.UpdateCustomer(customer, Session["Token"].ToString());
 
-                        if (!string.IsNullOrEmpty(customerResponse.Name))
+                        if (!string.IsNullOrEmpty(customerResponse.Identification))
                         {
                             lblResult.Text = "Customer Updated";
                             lblResult.Visible = true;

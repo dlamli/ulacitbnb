@@ -129,7 +129,7 @@
                             <td>
                                 <asp:Literal ID="ltrIdentification" Text="Identification" runat="server"></asp:Literal></td>
                             <td>
-                                <asp:TextBox ID="txtIdentificationManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                <asp:TextBox ID="txtIdentificationManagement" MaxLength="8" runat="server" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>
@@ -162,7 +162,7 @@
                             <td>
                                 <asp:Literal ID="ltrPhone" Text="Phone number" runat="server"></asp:Literal></td>
                             <td>
-                                <asp:TextBox ID="txtPhoneManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPhoneManagement" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox></td>
                         </tr>
                     </table>
                     <asp:Label ID="lblResult" ForeColor="Maroon" Visible="false" runat="server" />
