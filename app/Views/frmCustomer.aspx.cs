@@ -51,8 +51,8 @@ namespace AppUlacitBnB.Views
         protected void btnNew_Click(object sender, EventArgs e)
         {
             ltrTitleManagement.Text = "New Customer";
-            lblResult.Text = string.Empty;
             txtIdManagement.Text = string.Empty;
+            lblResult.Text = string.Empty;
             txtNameManagement.Text = string.Empty;
             txtLastNameManagement.Text = string.Empty;
             txtIdentificationManagement.Text = string.Empty;
@@ -121,9 +121,9 @@ namespace AppUlacitBnB.Views
 
                         if (!string.IsNullOrEmpty(customerResponse.Name))
                         {
-                            lblResult.Text = "Customer registered";
-                            lblResult.Visible = true;
-                            lblResult.ForeColor = Color.Green;
+                            lblStatus.Text = "Customer registered";
+                            lblStatus.Visible = true;
+                            lblStatus.ForeColor = Color.Green;
                             initControllers();
                         }
                     }

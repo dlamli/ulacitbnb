@@ -177,6 +177,15 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.TextBox txtIdentificationManagement;
 
         /// <summary>
+        /// rfvIdentification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIdentification;
+
+        /// <summary>
         /// ltrPassword control.
         /// </summary>
         /// <remarks>
@@ -195,6 +204,15 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.TextBox txtPasswordManagement;
 
         /// <summary>
+        /// rfvPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPassword;
+
+        /// <summary>
         /// ltrEmail control.
         /// </summary>
         /// <remarks>
@@ -211,6 +229,15 @@ namespace AppUlacitBnB.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmailManagement;
+
+        /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
 
         /// <summary>
         /// ltrStatus control.
@@ -249,6 +276,15 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.TextBox txtBirthdateManagement;
 
         /// <summary>
+        /// rfvBirthdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthdate;
+
+        /// <summary>
         /// ltrPhone control.
         /// </summary>
         /// <remarks>
@@ -265,6 +301,15 @@ namespace AppUlacitBnB.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhoneManagement;
+
+        /// <summary>
+        /// rfvPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPhone;
 
         /// <summary>
         /// lblResult control.
