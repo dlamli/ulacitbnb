@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace AppUlacitBnB.Models
+
 {
     public class Customer
     {
