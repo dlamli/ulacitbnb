@@ -80,7 +80,9 @@ namespace AppUlacitBnB.Views
                 result = await customerManager.DeleteCustomer(lblIdDelete.Text, Session["Token"].ToString());
                 if (!string.IsNullOrEmpty(result))
                 {
-                    ltrModalMessage.Text = "Customer deleted";
+                    lblStatus.Text = "Customer deleted";
+                    lblStatus.Visible = true;
+                    lblStatus.ForeColor = Color.Green;
                     initControllers();
                 }
             }
@@ -146,9 +148,9 @@ namespace AppUlacitBnB.Views
 
                         if (!string.IsNullOrEmpty(customerResponse.Identification))
                         {
-                            lblResult.Text = "Customer Updated";
-                            lblResult.Visible = true;
-                            lblResult.ForeColor = Color.Green;
+                            lblStatus.Text = "Customer Updated";
+                            lblStatus.Visible = true;
+                            lblStatus.ForeColor = Color.Green;
                             initControllers();
                         }
                     }

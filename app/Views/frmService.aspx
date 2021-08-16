@@ -1,21 +1,6 @@
-﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCustomer.aspx.cs" Inherits="AppUlacitBnB.Views.frmCustomer" %>
+﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmService.aspx.cs" Inherits="AppUlacitBnB.Views.frmService" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Bootstrap -->
-    <!-- Bootstrap DatePicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- Bootstrap DatePicker -->
-    <script type="text/javascript">
-        $(function () {
-            $('[id*=txtBirthdateManagement]').datepicker({
-                changeMonth: true,
-                changeYear: true,
-                format: "mm/dd/yyyy",
-                language: "tr"
-            });
-        });
-    </script>
     <script type="text/javascript">
         //Message window
         function openModal() {
@@ -37,17 +22,17 @@
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#MainContent_gvCustomer tr").filter(function () {
+                $("#MainContent_gvService tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
     </script>
 
-    <h1>Customer Management</h1>
+    <h1>Service Management</h1>
     <div class="container">
         <input id="myInput" placeholder="Search" class="form-control" type="text" />
-        <asp:GridView runat="server" ID="gvCustomer" OnRowCommand="gvCustomer_RowCommand" AutoGenerateColumns="false"
+        <asp:GridView runat="server" ID="gvService" OnRowCommand="gvService_RowCommand" AutoGenerateColumns="false"
             CssClass="table table-striped" AlternatingRowStyle-BackColor="WhiteSmoke" HeaderStyle-BackColor="Black"
             HeaderStyle-ForeColor="Gray" Width="100%">
 
@@ -55,15 +40,11 @@
 
                 <asp:BoundField HeaderText="ID" DataField="ID" />
                 <asp:BoundField HeaderText="Name" DataField="Name" />
-                <asp:BoundField HeaderText="LastName" DataField="LastName" />
-                <asp:BoundField HeaderText="Identification" DataField="Identification" />
-                <asp:BoundField HeaderText="Password" DataField="Password" />
-                <asp:BoundField HeaderText="Email" DataField="Email" />
+                <asp:BoundField HeaderText="Description" DataField="Description" />
+                <asp:BoundField HeaderText="Type" DataField="Type" />
                 <asp:BoundField HeaderText="Status" DataField="Status" />
-                <asp:BoundField HeaderText="BirthDate" DataField="BirthDate" />
-                <asp:BoundField HeaderText="Phone" DataField="Phone" />
-                <asp:ButtonField HeaderText="Update" Text="Update" CommandName="updateCustomer" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-primary" />
-                <asp:ButtonField HeaderText="Delete" Text="Delete" CommandName="deleteCustomer" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-danger" />
+                <asp:ButtonField HeaderText="Update" Text="Update" CommandName="updateService" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-primary" />
+                <asp:ButtonField HeaderText="Delete" Text="Delete" CommandName="deleteService" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="btn btn-danger" />
 
             </Columns>
 
@@ -84,7 +65,7 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times</button>
-                    <h4 class="modal-title">Customer Management</h4>
+                    <h4 class="modal-title">Service Management</h4>
                 </div>
 
                 <div class="modal-body">
@@ -119,7 +100,7 @@
                     <table style="width: 100%;">
                         <tr>
                             <td>
-                                <asp:Literal ID="ltrIdManagement" Text="CustomerID" runat="server"></asp:Literal>
+                                <asp:Literal ID="ltrIdManagement" Text="ServiceID" runat="server"></asp:Literal>
                             </td>
                             <td>
                                 <asp:TextBox ID="txtIdManagement" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
@@ -137,46 +118,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Literal ID="ltrLastNameManagement" Text="LastName" runat="server"></asp:Literal>
+                                <asp:Literal ID="ltrDescriptionManagement" Text="Description" runat="server"></asp:Literal>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtLastNameManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                <asp:TextBox ID="txtDescriptionManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvLastName" runat="server"
-                                    ErrorMessage="LastName is required" ControlToValidate="txtLastNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Literal ID="ltrIdentification" Text="Identification" runat="server"></asp:Literal>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtIdentificationManagement" MaxLength="8" runat="server" CssClass="form-control"></asp:TextBox></td>
-                            <td>
-                                <asp:RequiredFieldValidator ID="rfvIdentification" runat="server"
-                                    ErrorMessage="Identification is required" ControlToValidate="txtIdentificationManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Literal ID="ltrPassword" Text="Password" runat="server"></asp:Literal></td>
-                            <td>
-                                <asp:TextBox ID="txtPasswordManagement" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
-                                    ErrorMessage="Password is required" ControlToValidate="txtPasswordManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Literal ID="ltrEmail" Text="Email" runat="server"></asp:Literal></td>
-                            <td>
-                                <asp:TextBox ID="txtEmailManagement" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
-                                    ErrorMessage="Email is required" ControlToValidate="txtEmailManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
-                            </td>
+                                <asp:RequiredFieldValidator ID="rfvDescription" runat="server"
+                                    ErrorMessage="Description is required" ControlToValidate="txtDescriptionManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td>
@@ -189,25 +137,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Literal ID="ltrBirthdate" Text="Birthdate" runat="server"></asp:Literal></td>
+                                <asp:Literal ID="ltrType" Text="Type" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtBirthdateManagement" runat="server" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:RequiredFieldValidator ID="rfvBirthdate" runat="server"
-                                    ErrorMessage="Birthdate is required" ControlToValidate="txtBirthdateManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Literal ID="ltrPhone" Text="Phone number" runat="server"></asp:Literal></td>
-                            <td>
-                                <asp:TextBox ID="txtPhoneManagement" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:RequiredFieldValidator ID="rfvPhone" runat="server"
-                                    ErrorMessage="Phone is required" ControlToValidate="txtPhoneManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
-                            </td>
+                                <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server">
+                                    <asp:ListItem Value="Basic">Basic</asp:ListItem>
+                                    <asp:ListItem Value="VIP">VIP</asp:ListItem>
+                                </asp:DropDownList></td>
                         </tr>
                     </table>
                     <asp:Label ID="lblResult" ForeColor="Maroon" Visible="false" runat="server" />

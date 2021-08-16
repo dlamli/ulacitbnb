@@ -159,22 +159,15 @@ namespace ulacitbnb.Controllers
 
 
                     sqlConnection.Open();
-                    int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    if (rowsAffected <= 0)
-                    {
-                        return BadRequest($"Service with ID {service.ID} doesn't exist in database.");
-                    }
-                    else
-                    {
-                        return Ok(rowsAffected);
-                    }
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
+
+            return Ok(service);
         }
         // ===================================================================================================
         [HttpDelete, Route("{serviceId:int}")]

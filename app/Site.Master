@@ -52,7 +52,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/Views/frmCustomer.aspx">Customer</a></li>
                             <li><a href="#">Host</a></li>
-                            <li><a href="#">Service</a></li>
+                            <li><a href="/Views/frmService.aspx">Service</a></li>
                             <li><a href="#">Accomodation</a></li>
                             <li><a href="#">Review</a></li>
                             <li><a href="#">Room</a></li>
