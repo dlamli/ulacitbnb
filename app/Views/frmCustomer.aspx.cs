@@ -198,6 +198,5 @@ namespace AppUlacitBnB.Views
                     break;
             }
         }
-
     }
 }
