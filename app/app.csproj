@@ -201,6 +201,7 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\frmCustomer.aspx" />
+    <Content Include="Views\frmService.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -223,6 +224,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ServiceManager.cs" />
     <Compile Include="Controllers\CustomerManager.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -250,6 +252,7 @@
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -278,6 +281,13 @@
     </Compile>
     <Compile Include="Views\frmCustomer.aspx.designer.cs">
       <DependentUpon>frmCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmService.aspx.cs">
+      <DependentUpon>frmService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmService.aspx.designer.cs">
+      <DependentUpon>frmService.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

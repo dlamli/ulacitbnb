@@ -1,4 +1,4 @@
-﻿using AppUlacitBnB.Models;
+using AppUlacitBnB.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
