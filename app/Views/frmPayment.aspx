@@ -27,6 +27,7 @@
                 });
             });
         });
+
     </script>
 
     <H1>Payment Management</H1>

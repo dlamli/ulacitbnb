@@ -39,6 +39,41 @@ namespace AppUlacitBnB.Views
             }
         }
 
+        protected void gvPayments_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = gvPayments.Rows[index];
+
+            switch (e.CommandName)
+            {
+                case "modifyPayment":
+                    ltrManagementTitle.Text = "Modify payment";
+                    txtMantCode.Text = row.Cells[0].Text;
+                    ddlBrand.SelectedValue = row.Cells[1].Text;
+                    txtMantType.Text = row.Cells[2].Text;
+                    txtMantModality.Text = row.Cells[3].Text;
+                    txtMantDate.Text = row.Cells[4].Text;
+                    txtMantAmount.Text = row.Cells[5].Text;
+                    txtMantTaxes.Text = row.Cells[6].Text;
+                    txtMantTotal.Text = row.Cells[7].Text;
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() {openManagement(); } );", true);
+
+                    break;
+
+                case "deletePayment":
+                    lblDeleteCode.Text = row.Cells[0].Text;
+                    lblDeleteCode.Visible = false;
+                    ltrModalMessage.Text = "Do you wish to delete this payment?" + row.Cells[0].Text + " - " + row.Cells[1].Text;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                        "$(function() {openModal(); } );", true);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         protected async void btnAcceptModal_Click(object sender, EventArgs e)
         {
             try
@@ -76,10 +111,10 @@ namespace AppUlacitBnB.Views
                             Pay_Brand = ddlBrand.SelectedValue,
                             Pay_Type = txtMantType.Text,
                             Pay_Modality = txtMantModality.Text,
-                            Pay_Date = DateTime.Parse(txtMantDate.Text),
-                            Pay_Amount = Int32.Parse(txtMantAmount.Text),
-                            Pay_Taxes = decimal.Parse(txtMantTaxes.Text),
-                            Pay_Total = decimal.Parse(txtMantTotal.Text)
+                            Pay_Date = Convert.ToDateTime(txtMantDate.Text),
+                            Pay_Amount = Convert.ToInt32(txtMantAmount.Text),
+                            Pay_Taxes = Convert.ToDecimal(txtMantTaxes.Text),
+                            Pay_Total = Convert.ToDecimal(txtMantTotal.Text)
                         };
 
                         Payment paymentResponse = await paymentManager.EnterPayment(payment, Session["Token"].ToString());
@@ -100,10 +135,10 @@ namespace AppUlacitBnB.Views
                             Pay_Brand = ddlBrand.SelectedValue,
                             Pay_Type = txtMantType.Text,
                             Pay_Modality = txtMantModality.Text,
-                            Pay_Date = DateTime.Parse(txtMantDate.Text),
-                            Pay_Amount = Int32.Parse(txtMantAmount.Text),
-                            Pay_Taxes = decimal.Parse(txtMantTaxes.Text),
-                            Pay_Total = decimal.Parse(txtMantTotal.Text)
+                            Pay_Date = Convert.ToDateTime(txtMantDate.Text),
+                            Pay_Amount = Convert.ToInt32(txtMantAmount.Text),
+                            Pay_Taxes = Convert.ToDecimal(txtMantTaxes.Text),
+                            Pay_Total = Convert.ToDecimal(txtMantTotal.Text)
                         };
 
                         Payment paymentResponse = await paymentManager.UpdatePayment(payment, Session["Token"].ToString());
@@ -152,39 +187,6 @@ namespace AppUlacitBnB.Views
             {
                 if (item is TextBox)
                     ((TextBox)item).Text = string.Empty;
-            }
-        }
-
-        protected void gvPayments_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = gvPayments.Rows[index];
-
-            switch (e.CommandName)
-            {
-                case "Modify":
-                    ltrManagementTitle.Text = "Modify payment";
-                    txtMantCode.Text = row.Cells[0].Text;
-                    ddlBrand.SelectedValue = row.Cells[1].Text;
-                    txtMantType.Text = row.Cells[2].Text;
-                    txtMantModality.Text = row.Cells[3].Text;
-                    txtMantDate.Text = row.Cells[4].Text;
-                    txtMantAmount.Text = row.Cells[5].Text;
-                    txtMantTaxes.Text = row.Cells[6].Text;
-                    txtMantTotal.Text = row.Cells[7].Text;
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() {openManagement(); } );", true);
-
-                    break;
-                case "Delete":
-                    lblDeleteCode.Text = row.Cells[0].Text;
-                    lblDeleteCode.Visible = false;
-                    ltrModalMessage.Text = "Do you wish to delete this payment?" + row.Cells[0].Text + " - " + row.Cells[1].Text;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
-                        "$(function() {openModal(); } );", true);
-                    break;
-                default:
-                    break;
             }
         }
     }
