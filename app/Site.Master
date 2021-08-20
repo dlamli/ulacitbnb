@@ -50,7 +50,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Managements
                 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Customer</a></li>
+                            <li><a href="/Views/frmCustomer.aspx">Customer</a></li>
                             <li><a href="#">Host</a></li>
                             <li><a href="#">Service</a></li>
                             <li><a href="#">Accomodation</a></li>

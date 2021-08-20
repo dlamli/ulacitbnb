@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AppReservasULACIT.Models
+namespace AppUlacitBnB.Models
+
 {
     public class Customer
     {
