@@ -200,7 +200,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\frmAccomodation.aspx" />
     <Content Include="Views\frmCustomer.aspx" />
+    <Content Include="Views\frmRoom.aspx" />
     <Content Include="Views\frmService.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -224,6 +226,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccomodationManager.cs" />
+    <Compile Include="Controllers\RoomManager.cs" />
     <Compile Include="Controllers\ServiceManager.cs" />
     <Compile Include="Controllers\CustomerManager.cs" />
     <Compile Include="Default.aspx.cs">
@@ -250,8 +254,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Accomodation.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -275,12 +281,26 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAccomodation.aspx.cs">
+      <DependentUpon>frmAccomodation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmAccomodation.aspx.designer.cs">
+      <DependentUpon>frmAccomodation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmCustomer.aspx.cs">
       <DependentUpon>frmCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\frmCustomer.aspx.designer.cs">
       <DependentUpon>frmCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmRoom.aspx.cs">
+      <DependentUpon>frmRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmRoom.aspx.designer.cs">
+      <DependentUpon>frmRoom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmService.aspx.cs">
       <DependentUpon>frmService.aspx</DependentUpon>

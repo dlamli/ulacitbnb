@@ -196,7 +196,7 @@ namespace ulacitbnb.Controllers
                     }
                     else
                     {
-                        return Ok(rowsAffected);
+                        return Ok(accomodation);
                     }
                 }
             }
