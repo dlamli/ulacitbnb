@@ -42,7 +42,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/Default.aspx">ULACIT B&B
+                    <a class="navbar-brand" href="/Default.aspx">ULACIT B&B</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/Default.aspx">Home</a></li>
@@ -55,9 +55,10 @@
                             <li><a href="/Views/frmService.aspx">Service</a></li>
                             <li><a href="/Views/frmAccomodation.aspx">Accomodation</a></li>
                             <li><a href="#">Review</a></li>
+                            <li><a href="#">Room</a></li>
+                            <li><a href="/Views/frmReservation.aspx">Reservation</a></li>
                             <li><a href="/Views/frmRoom.aspx">Room</a></li>
-                            <li><a href="#">Reservation</a></li>
-                            <li><a href="#">Payment</a></li>
+                            <li><a href="/Views/frmPayment.aspx">Payment</a></li>
                         </ul>
                     </li>
                     <li>
