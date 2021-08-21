@@ -134,7 +134,13 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvName" runat="server"
-                                    ErrorMessage="Name is required" ControlToValidate="txtNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                    ForeColor="Red" ErrorMessage="Name is required" ControlToValidate="txtNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator3" ControlToValidate="txtNameManagement"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only letters allowed" ValidationExpression="^[A-Za-z]*$"></asp:RegularExpressionValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -144,7 +150,13 @@
                                 <asp:TextBox ID="txtLastNameManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvLastName" runat="server"
-                                    ErrorMessage="LastName is required" ControlToValidate="txtLastNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                    ForeColor="Red" ErrorMessage="LastName is required" ControlToValidate="txtLastNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator4" ControlToValidate="txtLastNameManagement"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only letters allowed" ValidationExpression="^[A-Za-z]*$"></asp:RegularExpressionValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -154,7 +166,12 @@
                                 <asp:TextBox ID="txtIdentificationManagement" MaxLength="8" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvIdentification" runat="server"
-                                    ErrorMessage="Identification is required" ControlToValidate="txtIdentificationManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    ForeColor="Red" ErrorMessage="Identification is required" ControlToValidate="txtIdentificationManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator" ControlToValidate="txtIdentificationManagement"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only numbers allowed" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
                         <tr>
@@ -165,18 +182,23 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
-                                    ErrorMessage="Password is required" ControlToValidate="txtPasswordManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    ForeColor="Red" ErrorMessage="Password is required" ControlToValidate="txtPasswordManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrEmail" Text="Email" runat="server"></asp:Literal></td>
                             <td>
-                                <asp:TextBox ID="txtEmailManagement" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtEmailManagement" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
-                                    ErrorMessage="Email is required" ControlToValidate="txtEmailManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ForeColor="Red" ErrorMessage="Email is required" ControlToValidate="txtEmailManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtEmailManagement"
+                                    ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                    Display="Dynamic" ErrorMessage="Invalid email address" />
                             </td>
                         </tr>
                         <tr>
@@ -196,7 +218,7 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvBirthdate" runat="server"
-                                    ErrorMessage="Birthdate is required" ControlToValidate="txtBirthdateManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    ForeColor="Red" ErrorMessage="Birthdate is required" ControlToValidate="txtBirthdateManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -207,7 +229,12 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvPhone" runat="server"
-                                    ErrorMessage="Phone is required" ControlToValidate="txtPhoneManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                                    ForeColor="Red" ErrorMessage="Phone is required" ControlToValidate="txtPhoneManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator1" ControlToValidate="txtPhoneManagement"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only numbers allowed" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
                     </table>
