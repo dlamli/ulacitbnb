@@ -51,7 +51,7 @@
                 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/Views/frmCustomer.aspx">Customer</a></li>
-                            <li><a href="#">Host</a></li>
+                            <li><a href="/Views/frmHosts.aspx">Host</a></li>
                             <li><a href="/Views/frmService.aspx">Service</a></li>
                             <li><a href="/Views/frmAccomodation.aspx">Accomodation</a></li>
                             <li><a href="#">Review</a></li>
