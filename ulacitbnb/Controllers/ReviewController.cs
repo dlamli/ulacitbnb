@@ -248,7 +248,7 @@ namespace ulacitbnb.Controllers
             {
                 return Request.CreateResponse(ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"NEW REVIEW CREATED SUCCESFULLY: {review.Title}");
+            return Request.CreateResponse(HttpStatusCode.OK, review);
         }
         // ===================================================================================================
         [HttpPut]
@@ -290,15 +290,15 @@ namespace ulacitbnb.Controllers
             {
                 return Request.CreateResponse(ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"REVIEW {review.Title} UPDATED SUCCESFULLY");
+            return Request.CreateResponse(HttpStatusCode.OK, review);
         }
         // ===================================================================================================
         [HttpDelete, Route("{reviewId:int}")]
-        public HttpResponseMessage RemoveReview(int reviewId)
+        public IHttpActionResult RemoveReview(int reviewId)
         {
             if (reviewId < 1)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid review ID");
+                return BadRequest("Invalid review ID");
             }
 
             try
@@ -314,9 +314,9 @@ namespace ulacitbnb.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(ex.ToString());
+                return InternalServerError(ex);
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"REVIEW DELETED WITH ANY PROBLEM");
+            return Ok(reviewId);
         }
 
     }

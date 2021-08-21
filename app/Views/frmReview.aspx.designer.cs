@@ -177,13 +177,13 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.Literal ltrRecommendation;
 
         /// <summary>
-        /// txtRecommendation control.
+        /// cbRecommendation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRecommendation;
+        protected global::System.Web.UI.WebControls.CheckBox cbRecommendation;
 
         /// <summary>
         /// ltrComment control.
@@ -240,6 +240,15 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.TextBox txtCustomerId;
 
         /// <summary>
+        /// RegularExpressionValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
+
+        /// <summary>
         /// ltrAccomodationId control.
         /// </summary>
         /// <remarks>
@@ -258,6 +267,15 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.TextBox txtAccomodationID;
 
         /// <summary>
+        /// RegularExpressionValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+
+        /// <summary>
         /// btnAcceptMaintModal control.
         /// </summary>
         /// <remarks>
@@ -274,5 +292,32 @@ namespace AppUlacitBnB.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCancelMaintModal;
+
+        /// <summary>
+        /// ltrAlertModalHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrAlertModalHeader;
+
+        /// <summary>
+        /// ltrAlertModalMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrAlertModalMsg;
+
+        /// <summary>
+        /// btnAlertModalOk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAlertModalOk;
     }
 }

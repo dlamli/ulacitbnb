@@ -43,5 +43,12 @@ namespace AppUlacitBnB.Controllers
             return JsonConvert.DeserializeObject<Host>(result);
         }
 
+        public async Task<string> Delete(string id)
+        {
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.DeleteAsync($"{controllerUrl}/{id}");
+            return JsonConvert.DeserializeObject<string>(await response.Content.ReadAsStringAsync());
+        }
+
     }
 }
