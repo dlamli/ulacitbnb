@@ -103,7 +103,9 @@
                                 <asp:Literal ID="ltrIdManagement" Text="ServiceID" runat="server"></asp:Literal>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtIdManagement" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
+                                <asp:TextBox ID="txtIdManagement" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
+                            </td>
+
                         </tr>
                         <tr>
                             <td>
@@ -114,7 +116,13 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvName" runat="server"
-                                    ErrorMessage="Name is required" ControlToValidate="txtNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                    ForeColor="Red" ErrorMessage="Name is required" ControlToValidate="txtNameManagement" EnableClientScript="False"></asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator3" ControlToValidate="txtNameManagement"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only letters allowed" ValidationExpression="^[A-Za-z]*$"></asp:RegularExpressionValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -124,7 +132,7 @@
                                 <asp:TextBox ID="txtDescriptionManagement" runat="server" CssClass="form-control"></asp:TextBox></td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvDescription" runat="server"
-                                    ErrorMessage="Description is required" ControlToValidate="txtDescriptionManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
+                                    ForeColor="Red" ErrorMessage="Description is required" ControlToValidate="txtDescriptionManagement" EnableClientScript="False"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td>
