@@ -57,7 +57,8 @@
 
          <br />
 
-        <asp:GridView ID="gvRoom" runat="server" OnRowCommand="gvRoom_RowCommand" AutoGenerateColumns="false" CssClass="table table-sm" HeaderStyle-BackColor="DarkGray" HeaderStyle-ForeColor="White" Width="100%">
+        <asp:GridView ID="gvRoom" runat="server" OnRowCommand="gvRoom_RowCommand" AutoGenerateColumns="false" CssClass="table table-striped" AlternatingRowStyle-BackColor="WhiteSmoke" HeaderStyle-BackColor="Black"
+            HeaderStyle-ForeColor="Gray" Width="100%">
             <Columns>
                 <asp:BoundField HeaderText="Accomodation" DataField="Acc_ID" />
                 <asp:BoundField HeaderText="Room ID" DataField="Roo_ID" />
