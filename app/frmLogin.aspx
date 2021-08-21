@@ -27,12 +27,13 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <asp:CheckBox ID="cbHostUser" runat="server" /> Host User
+                        <asp:CheckBox ID="cbIsHostUser" runat="server" /> Host User
                     </label>
                 </div>
             </div>
             <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-primary" Text="Sign In" OnClick="btnIngresar_Click" />
-            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/frmRegister.aspx">Register</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/frmRegister.aspx">Register as Customer</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/frmRegister.aspx">Register as Host</asp:HyperLink>
         </div>
     </form>
 </body>

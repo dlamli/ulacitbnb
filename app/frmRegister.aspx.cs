@@ -1,11 +1,11 @@
-﻿using AppUlacitBnB.Models;
-using AppUlacitBnB.Controllers;
+﻿using AppUlacitBnB.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ulacitbnb.Models;
 
 namespace AppUlacitBnB
 {

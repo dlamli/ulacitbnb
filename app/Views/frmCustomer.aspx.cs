@@ -1,5 +1,4 @@
-﻿using AppUlacitBnB.Models;
-using AppUlacitBnB.Controllers;
+﻿using AppUlacitBnB.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
+using ulacitbnb.Models;
 
 namespace AppUlacitBnB.Views
 {

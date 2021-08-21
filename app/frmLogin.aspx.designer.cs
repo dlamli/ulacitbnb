@@ -69,13 +69,13 @@ namespace AppUlacitBnB
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// cbHostUser control.
+        /// cbIsHostUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbHostUser;
+        protected global::System.Web.UI.WebControls.CheckBox cbIsHostUser;
 
         /// <summary>
         /// btnIngresar control.
@@ -94,5 +94,14 @@ namespace AppUlacitBnB
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+
+        /// <summary>
+        /// HyperLink2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
     }
 }
