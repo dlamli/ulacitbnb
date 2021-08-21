@@ -54,9 +54,13 @@
                             <li><a href="/Views/frmHosts.aspx">Host</a></li>
                             <li><a href="/Views/frmService.aspx">Service</a></li>
                             <li><a href="/Views/frmAccomodation.aspx">Accomodation</a></li>
+<<<<<<< HEAD
                             <li><a href="#">Review</a></li>
                             <li><a href="#">Room</a></li>
                             <li><a href="/Views/frmReservation.aspx">Reservation</a></li>
+=======
+                            <li><a href="/Views/frmReview.aspx">Review</a></li>
+>>>>>>> ecf4631 (Changes)
                             <li><a href="/Views/frmRoom.aspx">Room</a></li>
                             <li><a href="/Views/frmPayment.aspx">Payment</a></li>
                         </ul>

@@ -33,7 +33,7 @@
             </div>
             <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-primary" Text="Sign In" OnClick="btnIngresar_Click" />
             <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/frmRegister.aspx">Register as Customer</asp:HyperLink>
-            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/frmRegister.aspx">Register as Host</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink2" runat="server" CssClass="btn btn-info" style="margin-left: 10px" NavigateUrl="~/Views/frmRegisterHost.aspx">Register as Host</asp:HyperLink>
         </div>
     </form>
 </body>

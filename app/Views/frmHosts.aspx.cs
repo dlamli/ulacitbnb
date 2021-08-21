@@ -31,7 +31,7 @@ namespace AppUlacitBnB.Views
         {
             try
             {
-                hosts = await hostManager.GetHostsList(Session["Token"].ToString());
+                hosts = await hostManager.GetHostsList();
                 gvHosts.DataSource = hosts.ToList();
                 gvHosts.DataBind();
             }

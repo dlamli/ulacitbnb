@@ -211,11 +211,16 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\frmAccomodation.aspx" />
     <Content Include="Views\frmCustomer.aspx" />
+<<<<<<< HEAD
     <Content Include="Views\frmPayment.aspx" />
     <Content Include="Views\frmReservation.aspx" />
+=======
+    <Content Include="Views\frmReview.aspx" />
+>>>>>>> ecf4631 (Changes)
     <Content Include="Views\frmRoom.aspx" />
     <Content Include="Views\frmService.aspx" />
     <Content Include="Views\frmHosts.aspx" />
+    <Content Include="Views\frmRegisterHost.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -240,6 +245,7 @@
     </Compile>
     <Compile Include="Controllers\HostManager.cs" />
     <Compile Include="Controllers\AccomodationManager.cs" />
+    <Compile Include="Controllers\ReviewManager.cs" />
     <Compile Include="Controllers\RoomManager.cs" />
     <Compile Include="Controllers\ServiceManager.cs" />
     <Compile Include="Controllers\CustomerManager.cs" />
@@ -312,6 +318,7 @@
     <Compile Include="Views\frmCustomer.aspx.designer.cs">
       <DependentUpon>frmCustomer.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\frmPayment.aspx.cs">
       <DependentUpon>frmPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -325,6 +332,14 @@
     </Compile>
     <Compile Include="Views\frmReservation.aspx.designer.cs">
       <DependentUpon>frmReservation.aspx</DependentUpon>
+=======
+    <Compile Include="Views\frmReview.aspx.cs">
+      <DependentUpon>frmReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmReview.aspx.designer.cs">
+      <DependentUpon>frmReview.aspx</DependentUpon>
+>>>>>>> ecf4631 (Changes)
     </Compile>
     <Compile Include="Views\frmRoom.aspx.cs">
       <DependentUpon>frmRoom.aspx</DependentUpon>
@@ -346,6 +361,13 @@
     </Compile>
     <Compile Include="Views\frmHosts.aspx.designer.cs">
       <DependentUpon>frmHosts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmRegisterHost.aspx.cs">
+      <DependentUpon>frmRegisterHost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmRegisterHost.aspx.designer.cs">
+      <DependentUpon>frmRegisterHost.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

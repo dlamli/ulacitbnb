@@ -11,8 +11,26 @@ namespace AppUlacitBnB.Views
 {
 
 
-    public partial class frmRoom
+    public partial class frmReview
     {
+
+        /// <summary>
+        /// txtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+
+        /// <summary>
+        /// gvReviews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvReviews;
 
         /// <summary>
         /// btnNew control.
@@ -22,15 +40,6 @@ namespace AppUlacitBnB.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnNew;
-
-        /// <summary>
-        /// gvRoom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRoom;
 
         /// <summary>
         /// lblStatus control.
@@ -87,184 +96,166 @@ namespace AppUlacitBnB.Views
         protected global::System.Web.UI.WebControls.Literal ltrMaintenanceTitle;
 
         /// <summary>
-        /// ltrRoo_ID control.
+        /// ltrID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_ID;
+        protected global::System.Web.UI.WebControls.Literal ltrID;
 
         /// <summary>
-        /// txtRoo_ID control.
+        /// txtID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoo_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtID;
 
         /// <summary>
-        /// ltrAcc_ID control.
+        /// ltrTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrAcc_ID;
+        protected global::System.Web.UI.WebControls.Literal ltrTitle;
 
         /// <summary>
-        /// txtAcc_ID control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAcc_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// rfvtxtAcc_ID control.
+        /// ltrDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtAcc_ID;
+        protected global::System.Web.UI.WebControls.Literal ltrDate;
 
         /// <summary>
-        /// ltrRoo_Price control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_Price;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
 
         /// <summary>
-        /// txtRoo_Price control.
+        /// ltrRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoo_Price;
+        protected global::System.Web.UI.WebControls.Literal ltrRate;
 
         /// <summary>
-        /// rfvtxtRoo_Price control.
+        /// dpRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtRoo_Price;
+        protected global::System.Web.UI.WebControls.DropDownList dpRate;
 
         /// <summary>
-        /// ltrRoo_Quantity control.
+        /// ltrRecommendation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_Quantity;
+        protected global::System.Web.UI.WebControls.Literal ltrRecommendation;
 
         /// <summary>
-        /// txtRoo_Quantity control.
+        /// txtRecommendation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoo_Quantity;
+        protected global::System.Web.UI.WebControls.TextBox txtRecommendation;
 
         /// <summary>
-        /// rfvtxtRoo_Quantity control.
+        /// ltrComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtRoo_Quantity;
+        protected global::System.Web.UI.WebControls.Literal ltrComment;
 
         /// <summary>
-        /// ltrRoo_Type control.
+        /// txtComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_Type;
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
 
         /// <summary>
-        /// txtRoo_Type control.
+        /// ltrUsefull control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoo_Type;
+        protected global::System.Web.UI.WebControls.Literal ltrUsefull;
 
         /// <summary>
-        /// rfvtxtRoo_Type control.
+        /// txtUsefull control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtRoo_Type;
+        protected global::System.Web.UI.WebControls.TextBox txtUsefull;
 
         /// <summary>
-        /// ltrRoo_BedQuantity control.
+        /// ltrCustomerId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_BedQuantity;
+        protected global::System.Web.UI.WebControls.Literal ltrCustomerId;
 
         /// <summary>
-        /// txtRoo_BedQuantity control.
+        /// txtCustomerId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoo_BedQuantity;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerId;
 
         /// <summary>
-        /// ltrSer_ID control.
+        /// ltrAccomodationId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrSer_ID;
+        protected global::System.Web.UI.WebControls.Literal ltrAccomodationId;
 
         /// <summary>
-        /// txtSer_ID control.
+        /// txtAccomodationID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSer_ID;
-
-        /// <summary>
-        /// ltrRoo_Evaluation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrRoo_Evaluation;
-
-        /// <summary>
-        /// ddlEvaluation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEvaluation;
+        protected global::System.Web.UI.WebControls.TextBox txtAccomodationID;
 
         /// <summary>
         /// btnAcceptMaintModal control.
@@ -283,32 +274,5 @@ namespace AppUlacitBnB.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCancelMaintModal;
-
-        /// <summary>
-        /// ltrAlertModalHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrAlertModalHeader;
-
-        /// <summary>
-        /// ltrAlertModalMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrAlertModalMsg;
-
-        /// <summary>
-        /// btnAlertModalOk control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAlertModalOk;
     }
 }

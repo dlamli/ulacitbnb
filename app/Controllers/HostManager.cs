@@ -20,7 +20,15 @@ namespace AppUlacitBnB.Controllers
             return JsonConvert.DeserializeObject<Host>(await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<IEnumerable<Host>> GetHostsList(string token)
+        public async Task<Host> Register(Host host)
+        {
+            HttpClient httpClient = new HttpClient();
+            StringContent requestBody = new StringContent(JsonConvert.SerializeObject(host), Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(controllerUrl, requestBody);
+            return JsonConvert.DeserializeObject<Host>(await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<IEnumerable<Host>> GetHostsList()
         {
             HttpClient httpClient = new HttpClient();
             string result = await httpClient.GetStringAsync(controllerUrl);
