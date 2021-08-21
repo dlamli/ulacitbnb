@@ -257,21 +257,15 @@ namespace ulacitbnb.Controllers
 
 
                     sqlConnection.Open();
-                    int rowsAffected = sqlCommand.ExecuteNonQuery();
-                    if (rowsAffected <= 0)
-                    {
-                        return BadRequest($"Customer with ID {customer.ID} doesn't exist in database.");
-                    }
-                    else
-                    {
-                        return Ok(rowsAffected);
-                    }
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
+
+            return Ok(customer);
         }
         // ===================================================================================================
         [HttpDelete, Route("{customerId:int}")]
