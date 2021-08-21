@@ -11,9 +11,9 @@ namespace AppUlacitBnB.Models
         public string Pay_Brand { get; set; }
         public string Pay_Type { get; set; }
         public string Pay_Modality { get; set; }
-        public System.DateTime Pay_Date { get; set; }
+        public DateTime Pay_Date { get; set; }
         public int Pay_Amount { get; set; }
-        public float Pay_Taxes { get; set; }
-        public float Pay_Total { get; set; }
+        public decimal Pay_Taxes { get; set; }
+        public decimal Pay_Total { get; set; }
     }
 }

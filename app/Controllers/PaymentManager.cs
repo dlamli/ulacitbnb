@@ -53,11 +53,20 @@ namespace AppUlacitBnB.Controllers
 
         public async Task<Payment> UpdatePayment(Payment payment, string token)
         {
-            HttpClient httpClient = GetClient(token);
+            try
+            {
+                HttpClient httpClient = GetClient(token);
 
-            var response = await httpClient.PutAsync(Url, new StringContent(JsonConvert.SerializeObject(payment), Encoding.UTF8, "application/json"));
+                var response = await httpClient.PutAsync(Url, new StringContent(JsonConvert.SerializeObject(payment), Encoding.UTF8, "application/json"));
 
-            return JsonConvert.DeserializeObject<Payment>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<Payment>(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public async Task<string> DeletePayment(string code, string token)

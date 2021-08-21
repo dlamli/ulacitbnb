@@ -7,12 +7,12 @@
             $('#myModal').modal('show'); //message window
         }
 
-        function openManagement() {
-            $('#myModalManagement').modal('show'); //management window
-        }
-
         function closeModal() {
             $('#myModal').modal('hide'); //message window close
+        }
+
+        function openManagement() {
+            $('#myModalManagement').modal('show'); //management window
         }
 
         function closeManagement() {
@@ -22,7 +22,7 @@
         $(document).ready(function () {
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#MainContent_gvPayments tr").filter(function () {
+                $("#MainContent_gvPayment tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
@@ -33,7 +33,8 @@
     <H1>Payment Management</H1>
     <div class="container">
         <input id="myInput"¨Placeholder="Search" class="form-control" type="text" />
-        <asp:GridView ID="gvPayments" OnRowCommand="gvPayments_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered" 
+
+        <asp:GridView ID="gvPayment" OnRowCommand="gvPayment_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered" 
             AlternatingRowStyle-BackColor="LightGray" HeaderStyle-BackColor="LightBlue" 
             HeaderStyle-ForeColor="White" Width="100%">
             <Columns>
@@ -45,15 +46,18 @@
                 <asp:BoundField HeaderText="Amount" DataField="Pay_Amount" ItemStyle-HorizontalAlign="Right"/>
                 <asp:BoundField HeaderText="Taxes" DataField="Pay_Taxes" ItemStyle-HorizontalAlign="Right"/>
                 <asp:BoundField HeaderText="Total" DataField="Pay_Total" ItemStyle-HorizontalAlign="Right"/>
-                <asp:ButtonField HeaderText="Modify" Text="Modify" CommandName="ModifyPayment" ItemStyle-HorizontalAlign="Center" 
+                <asp:ButtonField HeaderText="Modify" Text="Modify" CommandName="modifyPayment" ItemStyle-HorizontalAlign="Center" 
                     ControlStyle-CssClass="btn btn-primary"/>
-                <asp:ButtonField HeaderText="Delete" Text="Delete" CommandName="DeletePayment" ItemStyle-HorizontalAlign="Center" 
+                <asp:ButtonField HeaderText="Delete" Text="Delete" CommandName="deletePayment" ItemStyle-HorizontalAlign="Center" 
                     ControlStyle-CssClass="btn btn-danger"/>
             </Columns>
         </asp:GridView>
+
         <asp:LinkButton type="button" OnClick="btnNew_Click" CssClass="btn btn-success" ID="btnNew" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> New Payment"/>
         <br />
+
         <asp:Label ID="lblStatus" ForeColor="Maroon" runat="server" Visible="false" />
+
     </div>
     <!-- MODAL WINDOW -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -76,6 +80,7 @@
             </div>
         </div>
     </div>
+
     <!-- MANAGEMENT WINDOW -->
     <div id="myModalManagement" class="modal fade" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
