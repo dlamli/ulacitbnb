@@ -132,7 +132,7 @@ namespace ulacitbnb.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"NEW HOST CREATED SUCCESFULLY: {host.Name} {host.LastName}");
+            return Request.CreateResponse(HttpStatusCode.OK, host);
         }
         // ===================================================================================================
         [HttpPost, Route("auth")]

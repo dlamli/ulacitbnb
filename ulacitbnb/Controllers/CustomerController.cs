@@ -165,6 +165,10 @@ namespace ulacitbnb.Controllers
                         var token = TokenGenerator.GenerateTokenJwt(loginRequest.Username);
                         customer.Token = token;
                     }
+                    if (customer is null)
+                    {
+                        return Unauthorized();
+                    }
                     if (!string.IsNullOrEmpty(customer.Token))
                         return Ok(customer);
                     else return Unauthorized();
