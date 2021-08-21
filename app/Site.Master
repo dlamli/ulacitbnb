@@ -55,6 +55,8 @@
                             <li><a href="/Views/frmService.aspx">Service</a></li>
                             <li><a href="/Views/frmAccomodation.aspx">Accomodation</a></li>
                             <li><a href="#">Review</a></li>
+                            <li><a href="#">Room</a></li>
+                            <li><a href="/Views/frmReservation.aspx">Reservation</a></li>
                             <li><a href="/Views/frmRoom.aspx">Room</a></li>
                             <li><a href="#">Reservation</a></li>
                             <li><a href="/Views/frmPayment.aspx">Payment</a></li>
