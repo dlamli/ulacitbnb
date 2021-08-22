@@ -50,9 +50,9 @@ namespace AppUlacitBnB.Views
         private void resetControls()
         {
             txtID.Text = string.Empty;
-            txtDate.Text = string.Empty;
+            txtDate.Text = DateTime.Today.ToString();
             dpRate.SelectedValue = default;
-            txtRecommendation.Text = string.Empty;
+            cbRecommendation.Checked = true;
             txtComment.Text = string.Empty;
             txtUsefull.Text = string.Empty;
             txtCustomerId.Text = string.Empty;
@@ -68,9 +68,82 @@ namespace AppUlacitBnB.Views
             "$(function() {openModalMaintenance(); } )", true);
         }
 
-        protected void btnAcceptMaintModal_Click(object sender, EventArgs e)
+        protected async void btnAcceptMaintModal_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (Page.IsValid)
+                {
+                    if (string.IsNullOrEmpty(txtID.Text))
+                    {
+                        Review review = new Review()
+                        {
+                            Title = txtTitle.Text,
+                            Date = Convert.ToDateTime(txtDate.Text),
+                            Rate = Int32.Parse(dpRate.SelectedValue),
+                            Recommendation = cbRecommendation.Checked,
+                            Comment = txtComment.Text,
+                            Usefull = Int32.Parse(txtUsefull.Text),
+                            CustomerID = Int32.Parse(txtCustomerId.Text),
+                            AccomodationID = Int32.Parse(txtAccomodationID.Text)
+                        };
+                        Review response = await reviewManager.EnterReview(review, Session["Token"].ToString());
+                        if (response.Rate <= 1)
+                        {
+                            ltrAlertModalHeader.Text = "Success!";
+                            ltrAlertModalMsg.Text = "New Review created successfully.";
 
+                            //Open alert modal
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                                "$(function() {openAlertModal(); } )", true);
+                            initControllers();
+                        }
+                    }
+                    else
+                    {
+                        Review review = new Review()
+                        {
+                            ID = Int32.Parse(txtID.Text),
+                            Title = txtTitle.Text,
+                            Date = Convert.ToDateTime(txtDate.Text),
+                            Rate = Int32.Parse(dpRate.SelectedValue),
+                            Recommendation = cbRecommendation.Checked,
+                            Comment = txtComment.Text,
+                            Usefull = Int32.Parse(txtUsefull.Text),
+                            CustomerID = Int32.Parse(txtCustomerId.Text),
+                            AccomodationID = Int32.Parse(txtAccomodationID.Text)
+                        };
+                        Review response = await reviewManager.UpdateReview(review, Session["Token"].ToString());
+
+                        if (response.Rate >= 1)
+                        {
+                            ltrAlertModalHeader.Text = "Success!";
+                            ltrAlertModalMsg.Text = "Review modified successfully.";
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                                "$(function() {openAlertModal(); } )", true);
+
+                            initControllers();
+                        }
+                        else
+                        {
+                            // Alert User
+                            ltrAlertModalHeader.Text = "Action Failed";
+                            ltrAlertModalMsg.Text = "There was an error modifying the review.";
+
+                            //Open alert modal
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                                "$(function() {openAlertModal(); } )", true);
+                        }
+
+                    }
+                }
+            }
+            catch (Exception crash)
+            {
+                lblStatus.Text = "An error ocurred to load service. Details: " + crash.Message;
+                lblStatus.Visible = true;
+            }
         }
 
         protected void btnCancelMaintModal_Click(object sender, EventArgs e)
@@ -92,11 +165,11 @@ namespace AppUlacitBnB.Views
                     txtDate.Text = row.Cells[1].Text;
                     dpRate.SelectedValue = row.Cells[2].Text;
                     txtComment.Text = row.Cells[4].Text;
-                    txtRecommendation.Text = row.Cells[3].Text;
-                    txtUsefull.Text = row.Cells[3].Text;
+                    txtUsefull.Text = row.Cells[5].Text;
                     txtTitle.Text = row.Cells[6].Text;
                     txtCustomerId.Text = row.Cells[7].Text;
                     txtAccomodationID.Text = row.Cells[8].Text;
+                    cbRecommendation.Checked = bool.Parse(row.Cells[3].Text);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
                      "$(function() {openModalMaintenance(); } )", true);
                     break;
@@ -109,14 +182,43 @@ namespace AppUlacitBnB.Views
             }
         }
 
-        protected void btnAcceptModal_Click(object sender, EventArgs e)
+        protected async void btnAcceptModal_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string result = string.Empty;
+                result = await reviewManager.DeleteRoom(lblDeleteCode.Text, Session["Token"].ToString());
+                if (!string.IsNullOrEmpty(result))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                     "$(function() {closeModal();} )", true);
 
+                    ltrAlertModalHeader.Text = "Success";
+                    ltrAlertModalMsg.Text = "Review removed";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                        "$(function() {openAlertModal(); } )", true);
+
+                    initControllers();
+                }
+            }
+            catch (Exception crash)
+            {
+                lblStatus.Text = "An error ocurred to load service. Details: " + crash.Message;
+                lblStatus.Visible = true;
+            }
         }
 
         protected void btnCancelModal_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+            "$(function() {closeModal();} )", true);
+        }
 
+        protected void btnAlertModalOk_Click(object sender, EventArgs e)
+        {
+            //Close alert modal
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide",
+                "$(function() {closeAlertModal(); } )", true);
         }
     }
 }

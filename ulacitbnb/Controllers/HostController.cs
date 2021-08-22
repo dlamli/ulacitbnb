@@ -243,7 +243,7 @@ namespace ulacitbnb.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
-            return Request.CreateResponse(HttpStatusCode.OK, $"HOST DELETED WITH ANY PROBLEM");
+            return Request.CreateResponse(HttpStatusCode.OK, hostId);
         }
 
     }

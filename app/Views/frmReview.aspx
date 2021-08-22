@@ -13,7 +13,7 @@
                 changeMonth: true,
                 changeYear: true,
                 format: "mm/dd/yyyy",
-                language: "en"
+                language: "tr"
             });
         });
 
@@ -152,7 +152,7 @@
                                     <asp:Literal ID="ltrRecommendation" text="Recommendation:" runat="server"></asp:Literal>
                                 </td>
                                 <td>
-                                     <asp:TextBox ID="txtRecommendation" runat="server" Enabled="true" CssClass="form-control"></asp:TextBox>
+                                    <asp:CheckBox ID="cbRecommendation" Enabled="true" runat="server" />
                                 </td>
                             </tr>
                             <tr>
@@ -177,6 +177,9 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCustomerId" runat="server" Enabled="true" CssClass="form-control"></asp:TextBox>
+                                       <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator3" ControlToValidate="txtCustomerId"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only numbers allowed" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                                 </td>
                             </tr>
                              <tr>
@@ -185,6 +188,9 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtAccomodationID" runat="server" Enabled="true" CssClass="form-control"></asp:TextBox>
+                                      <asp:RegularExpressionValidator
+                                    ID="RegularExpressionValidator2" ControlToValidate="txtAccomodationID"
+                                    ForeColor="Red" runat="server" ErrorMessage="Only numbers allowed" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                                 </td>
                             </tr>
                         </table>
@@ -194,6 +200,28 @@
                             Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Ok" />
                         <asp:LinkButton ID="btnCancelMaintModal" runat="server" CssClass="btn btn-danger rounded" OnClick="btnCancelMaintModal_Click"
                             Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cancel" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+     <!-- Alert Modal Window -->
+        <div id="alertModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismss="modal" text="text" runat="server">&times;</button>
+                        <h4 class="modal-title"> <asp:Literal ID="ltrAlertModalHeader" runat="server"/></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <asp:Literal ID="ltrAlertModalMsg" runat="server"/>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:LinkButton ID="btnAlertModalOk" runat="server" CssClass="btn btn-default rounded" OnClick="btnAlertModalOk_Click"
+                             Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Ok" />
                     </div>
                 </div>
             </div>
