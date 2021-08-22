@@ -43,7 +43,7 @@ namespace AppUlacitBnB.Views
          
 
         }
-
+        
         protected void gvHosts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);

@@ -169,7 +169,6 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtUsefull" runat="server" Enabled="true" CssClass="form-control"></asp:TextBox>
-                                    
                                 </td>
                             </tr>
                             <tr>
@@ -201,7 +200,6 @@
                             Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Ok" />
                         <asp:LinkButton ID="btnCancelMaintModal" runat="server" CssClass="btn btn-danger rounded" OnClick="btnCancelMaintModal_Click"
                             Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cancel" />
-                  
                     </div>
                 </div>
             </div>
